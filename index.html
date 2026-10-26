@@ -122,13 +122,6 @@
   .hero .mark { width: min(100%, 76svh); margin: auto 0; align-self: flex-start; margin-left: 2%; }
   .hero-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem 3rem; flex-wrap: wrap; }
   .tagline { margin: 0; max-width: 34ch; font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.4; }
-  .hero-neg {
-    --bg: #000; --fg: #fff;
-    position: absolute; inset: 0;
-    background: #000; color: #fff;
-    pointer-events: none;
-    clip-path: circle(0px at 50% 50%);
-  }
 
   /* Música */
   .release { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: end; margin-bottom: clamp(3.5rem, 8vw, 6rem); }
@@ -145,40 +138,52 @@
   /* Directo */
   .formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-bottom: clamp(3rem, 7vw, 5rem); }
   .format { padding: clamp(1.5rem, 4vw, 3rem); }
-  .format--pos { --bg: #fff; --fg: #000; background: #fff; color: #000; border: 2px solid #000; border-right-width: 1px; }
-  .format--neg { --bg: #000; --fg: #fff; background: #000; color: #fff; border: 2px solid #000; border-left-width: 1px; }
+  .format--pos { --bg: #fff; --fg: #000; background: #fff; color: #000; border: 2px solid #fff; border-right-width: 1px; }
+  .format--neg { --bg: #000; --fg: #fff; background: #000; color: #fff; border: 2px solid #fff; border-left-width: 1px; }
   .format p { margin: 0 0 1em; max-width: 44ch; }
   .format .duration { font-family: var(--display); font-stretch: 60%; font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: .9; margin: 0 0 1.2rem; }
   .format .variant { border-top: 2px solid currentColor; padding-top: 1rem; margin-top: 1.5rem; }
-  .video { margin: 0; }
+  .video { margin: 0; max-width: 60rem; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.2rem, 3vw, 2.5rem); align-items: center; }
   .video .frame { position: relative; aspect-ratio: 16 / 9; background: #000; }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .video figcaption { margin-top: .9rem; max-width: 70ch; }
+  .video figcaption p { margin: 0 0 .8rem; max-width: 40ch; }
+  .video figcaption h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+  .visualizer { margin-top: clamp(3rem, 7vw, 5rem); }
 
-  /* Universo */
-  .universe-text { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 5vw, 4rem); margin-bottom: clamp(3rem, 7vw, 5rem); }
-  .refs { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(.8rem, 2vw, 1.5rem); }
-  .ref { margin: 0; }
-  .ref button { display: block; width: 100%; padding: 0; border: 0; background: #fff; cursor: pointer; overflow: hidden; }
-  .ref img { width: 100%; height: 100%; object-fit: cover; transition: filter .6s; }
-  .ref button[aria-pressed="true"] img { filter: invert(1); }
-  .ref figcaption { margin-top: .5rem; font-size: .9rem; line-height: 1.4; opacity: .7; }
-  .ref--a { grid-column: 1 / 8; }
-  .ref--a button { aspect-ratio: 16 / 10; }
-  .ref--b { grid-column: 8 / 13; grid-row: 1 / 3; }
-  .ref--b button { height: calc(100% - 2.6rem); min-height: 100%; }
-  .ref--c { grid-column: 1 / 8; }
-  .ref--c button { aspect-ratio: 16 / 10; }
-  .ref--d, .ref--e, .ref--f { grid-column: span 4; }
-  .ref--d button, .ref--e button, .ref--f button { aspect-ratio: 1; }
-  .ref--g { grid-column: 6 / 13; }
-  .ref--g button { aspect-ratio: 4 / 3; }
-  .refs-note { grid-column: 8 / 13; align-self: end; margin: 0; }
+  /* Universo: collage de referencias sobre fondo a color */
+  .universe {
+    position: relative; overflow: hidden;
+    background: linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.62) 60%, rgba(0,0,0,.35)), url(assets/bg-explosion.webp) center / cover no-repeat, #000;
+  }
+  .universe > * { position: relative; }
+  .universe-text { margin-bottom: clamp(2rem, 5vw, 4rem); }
+  .collage { height: clamp(520px, 62vw, 900px); }
+  .collage .c {
+    position: absolute; height: auto; max-width: none;
+    transform: translate3d(0, calc(var(--py, 0px) * var(--s, 0)), 0) rotate(var(--r, 0deg));
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,.55));
+    will-change: transform;
+  }
+  .c-figuras { left: 0; top: 8%; width: 38%; }
+  .c-cabeza { left: 36%; top: 0; width: 20%; z-index: 2; }
+  .c-meridianos { left: 61%; top: 4%; height: 84%; width: auto; z-index: 1; filter: none !important; opacity: .9; }
+  .c-anatomia { left: 70%; top: 30%; width: 28%; z-index: 3; }
+  .c-carta { left: 12%; top: 52%; width: 46%; z-index: 2; }
+
+  /* Lente negativo: sigue el puntero en todo el sitio */
+  .lens {
+    position: fixed; left: 0; top: 0; z-index: 60;
+    border-radius: 50%; pointer-events: none;
+    -webkit-backdrop-filter: invert(1); backdrop-filter: invert(1);
+    transform: translate3d(-999px, -999px, 0) scale(0);
+    will-change: transform;
+  }
 
   /* Prensa */
   .press { max-width: 52ch; }
 
   /* Contacto */
+  #contacto { background: linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.78)), url(assets/bg-esferas.webp) center / cover no-repeat, #000; }
   .booking { font-family: var(--display); font-stretch: 70%; font-weight: 800; font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1; margin: 0 0 2rem; }
   .booking small { display: block; font-family: var(--text); font-stretch: 100%; font-weight: 400; font-size: 1.05rem; line-height: 1.6; margin-bottom: .4rem; opacity: .7; }
   .links { list-style: none; margin: 0 0 clamp(4rem, 9vw, 7rem); padding: 0; display: grid; gap: .5rem; }
@@ -187,17 +192,18 @@
   .foot img { width: min(100%, 520px); }
 
   @media (max-width: 820px) {
-    .release, .release--flip, .universe-text { grid-template-columns: minmax(0, 1fr); align-items: start; }
+    .video { grid-template-columns: minmax(0, 1fr); }
+    .collage { height: 170vw; }
+    .c-figuras { left: 0; top: 0; width: 70%; }
+    .c-cabeza { left: 52%; top: 12%; width: 46%; }
+    .c-meridianos { left: 2%; top: 32%; height: 40%; }
+    .c-anatomia { left: 40%; top: 38%; width: 58%; }
+    .c-carta { left: 0; top: 66%; width: 90%; }
+    .release, .release--flip { grid-template-columns: minmax(0, 1fr); align-items: start; }
     .release--flip .cover { order: 0; }
     .formats { grid-template-columns: minmax(0, 1fr); }
     .format--pos { border-right-width: 2px; border-bottom-width: 1px; }
     .format--neg { border-left-width: 2px; border-top-width: 1px; }
-    .ref--a, .ref--c, .ref--g { grid-column: 1 / -1; }
-    .ref--b { grid-column: 1 / -1; grid-row: auto; }
-    .ref--b button { aspect-ratio: 3 / 4; height: auto; min-height: 0; }
-    .ref--d, .ref--e, .ref--f { grid-column: span 6; }
-    .ref--f { grid-column: 1 / -1; }
-    .refs-note { grid-column: 1 / -1; }
     .nav .mini { display: none; }
     .nav { padding-top: .7rem; padding-bottom: .7rem; }
     .nav ul { width: 100%; justify-content: space-between; flex-wrap: nowrap; gap: .3rem; }
@@ -206,19 +212,20 @@
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .ref img, .btn { transition: none; }
+    .btn { transition: none; }
   }
 </style>
 </head>
 <body>
+<div class="lens" id="lens" aria-hidden="true"></div>
 <a class="skip" href="#musica">Saltar al contenido</a>
 
 <nav class="nav" aria-label="Principal">
   <a class="mini" href="#inicio" aria-label="NICTO, inicio"><img src="assets/logo-blanco.png" alt="" width="40" height="26"></a>
   <ul>
+    <li><a href="#universo">Universo</a></li>
     <li><a href="#musica">Música</a></li>
     <li><a href="#directo">Directo</a></li>
-    <li><a href="#universo">Universo</a></li>
     <li><a href="#prensa">Prensa</a></li>
     <li><a href="#contacto" data-booking>Booking</a></li>
   </ul>
@@ -228,7 +235,7 @@
   <h1 class="sr-only">NICTO</h1>
   <div class="hero-stack" id="stack">
     <div class="hero-content" id="hero-content">
-      <img class="mark" src="assets/logo-negro.png" data-neg="assets/logo-blanco.png" alt="NICTO" width="2345" height="1523" fetchpriority="high">
+      <img class="mark" src="assets/logo-negro.png" alt="NICTO" width="2345" height="1523" fetchpriority="high">
       <div class="hero-foot">
         <p class="tagline">Proyecto musical y performático de Chile. Electrónica para bailar, entre el pop y lo oscuro.</p>
         <p class="actions">
@@ -237,12 +244,26 @@
         </p>
       </div>
     </div>
-    <div class="hero-neg" id="hero-neg"></div>
   </div>
 </header>
 
 <main>
-<section class="band band--neg" id="musica" aria-labelledby="t-musica">
+<section class="band band--neg universe" id="universo" aria-labelledby="t-universo">
+  <h2 id="t-universo">Universo</h2>
+  <div class="prose universe-text">
+      <p>NICTO es un proyecto musical y performático independiente de Chile. Se gesta desde 2020 y se lanza en 2026 con «Síntesis», su sencillo debut. Es autoproducido por su autor, el músico talquino César Carreño M. Combina composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y el estado catártico.</p>
+      <p>Desde 2024 piensa su presentación en vivo con el escenario como espacio ritual para contar historias: el concierto como algo más que una sucesión de canciones.</p>
+    </div>
+  <div class="collage" id="collage" aria-hidden="true">
+    <img class="c c-figuras" src="assets/cut-figuras.webp" alt="" style="--r:-4deg;--s:.10" width="1100" height="762" loading="lazy">
+    <img class="c c-cabeza" src="assets/cut-cabeza.webp" alt="" style="--r:3deg;--s:-.12" width="812" height="966" loading="lazy">
+    <img class="c c-meridianos" src="assets/line-meridianos.webp" alt="" style="--r:0deg;--s:.06" width="594" height="915" loading="lazy">
+    <img class="c c-anatomia" src="assets/cut-anatomia.webp" alt="" style="--r:-3deg;--s:-.06" width="974" height="830" loading="lazy">
+    <img class="c c-carta" src="assets/cut-carta.webp" alt="" style="--r:2deg;--s:.14" width="1300" height="782" loading="lazy">
+  </div>
+</section>
+
+<section class="band band--pos" id="musica" aria-labelledby="t-musica">
   <h2 id="t-musica">Música</h2>
   <p class="lead">Dos lanzamientos, disponibles en todas las plataformas.</p>
 
@@ -272,13 +293,17 @@
     <div class="frame">
       <iframe src="https://www.youtube-nocookie.com/embed/Drc-wVFhX44" title="Visualizer de Síntesis (Tankboy Remix)" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
-    <figcaption>«SÍNTESIS//REMIX//VISUALIZER». Estrenado en octubre de 2026. Edición de Nicto y Tankboy; cámara de Dicapriodeth. <a href="https://www.youtube.com/watch?v=Drc-wVFhX44" target="_blank" rel="noopener">Verlo en YouTube</a>.</figcaption>
+    <figcaption>
+      <h3>Visualizer del remix</h3>
+      <p>«SÍNTESIS//REMIX//VISUALIZER», estrenado en octubre de 2026. Edición de Nicto y Tankboy; cámara de Dicapriodeth.</p>
+      <p class="small"><a href="https://www.youtube.com/watch?v=Drc-wVFhX44" target="_blank" rel="noopener">Verlo en YouTube</a></p>
+    </figcaption>
   </figure>
 
   <p class="listen actions"><a class="btn" href="https://open.spotify.com/intl-es/artist/7tOOxVVu8GvyebUSOocF6V" target="_blank" rel="noopener">NICTO en Spotify</a></p>
 </section>
 
-<section class="band band--pos" id="directo" aria-labelledby="t-directo">
+<section class="band band--neg" id="directo" aria-labelledby="t-directo">
   <h2 id="t-directo">Directo</h2>
   <p class="lead">Dos formatos: un show para ver y un set para bailar.</p>
 
@@ -304,64 +329,12 @@
     <div class="frame">
       <iframe src="https://www.youtube-nocookie.com/embed/J7MSzULZTTc" title="PERFOTIK presenta a NICTO, sesión en vivo de «Síntesis»" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
-    <figcaption>«PERFOTIK presenta a: NICTO». Sesión en vivo de «Síntesis», publicada en septiembre de 2026. <a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Verla en YouTube</a>.</figcaption>
+    <figcaption>
+      <h3>Sesión en vivo</h3>
+      <p>«PERFOTIK presenta a: NICTO». «Síntesis», el sencillo debut, en versión sesión en vivo. Publicada en septiembre de 2026.</p>
+      <p class="small"><a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Verla en YouTube</a></p>
+    </figcaption>
   </figure>
-</section>
-
-<section class="band band--neg" id="universo" aria-labelledby="t-universo">
-  <h2 id="t-universo">Universo</h2>
-  <div class="universe-text">
-    <div class="prose">
-      <p>NICTO es un proyecto musical y performático independiente de Chile. Se gesta desde 2020 y se lanza en 2026 con «Síntesis», su sencillo debut. Es autoproducido por su autor, el músico talquino César Carreño M. Combina composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y el estado catártico.</p>
-      <p>Desde 2024 piensa su presentación en vivo con el escenario como espacio ritual para contar historias: el concierto como algo más que una sucesión de canciones.</p>
-    </div>
-    <p class="small muted prose">Las imágenes de abajo son referencias conceptuales del alma del proyecto. Tócalas para verlas en negativo.</p>
-  </div>
-
-  <div class="refs">
-    <figure class="ref ref--a">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: carta con puntos y líneas sobre un cuerpo">
-        <img src="assets/ref-carta-cuerpo.webp" alt="Ilustración anatómica de torso y brazos con puntos y líneas marcados sobre la piel" width="1500" height="922" loading="lazy">
-      </button>
-      <figcaption>Carta de puntos sobre el cuerpo</figcaption>
-    </figure>
-    <figure class="ref ref--b">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: figura de perfil con líneas de meridianos">
-        <img src="assets/ref-meridianos.webp" alt="Dibujo de una figura de perfil atravesada por líneas horizontales numeradas" width="673" height="1003" loading="lazy">
-      </button>
-      <figcaption>Figura de perfil y líneas numeradas</figcaption>
-    </figure>
-    <figure class="ref ref--c">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: cabeza atravesada por líneas de energía">
-        <img src="assets/ref-cabeza-energia.webp" alt="Ilustración de una cabeza hecha de líneas de contorno, con una explosión de luz en la frente" width="1365" height="1025" loading="lazy">
-      </button>
-      <figcaption>Cabeza hecha de líneas de energía</figcaption>
-    </figure>
-    <figure class="ref ref--d">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: dos esferas que se superponen">
-        <img src="assets/ref-esferas.webp" alt="Dos esferas pintadas que se superponen, con círculos más pequeños en su interior" width="1500" height="844" loading="lazy">
-      </button>
-      <figcaption>Dos esferas que se encuentran</figcaption>
-    </figure>
-    <figure class="ref ref--e">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: dos esferas dentro de una explosión de luz">
-        <img src="assets/ref-explosion.webp" alt="Dos esferas oscuras en el centro de una explosión de luz" width="1500" height="844" loading="lazy">
-      </button>
-      <figcaption>Dos esferas en una explosión</figcaption>
-    </figure>
-    <figure class="ref ref--f">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: recorte anatómico con calavera y piel">
-        <img src="assets/ref-collage-anatomia.webp" alt="Collage de un torso dividido a la mitad entre esqueleto y piel, con puntos marcados" width="1020" height="877" loading="lazy">
-      </button>
-      <figcaption>Un torso entre el esqueleto y la piel</figcaption>
-    </figure>
-    <figure class="ref ref--g">
-      <button type="button" aria-pressed="false" aria-label="Invertir imagen: dos figuras hechas de cuadrículas">
-        <img src="assets/ref-figuras.webp" alt="Dos figuras humanas hechas de pequeños cuadrados, una de ellas con un círculo claro en el abdomen" width="1229" height="865" loading="lazy">
-      </button>
-      <figcaption>Dos figuras de cuadrícula</figcaption>
-    </figure>
-  </div>
 </section>
 
 <section class="band band--pos" id="prensa" aria-labelledby="t-prensa">
@@ -402,75 +375,66 @@
       line.textContent = ""; line.appendChild(link);
     }
 
-    // Imágenes de referencia: toggle negativo
-    document.querySelectorAll(".ref button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
-      });
-    });
-
-    // Lente negativo en la portada
-    var stack = document.getElementById("stack");
-    var pos = document.getElementById("hero-content");
-    var neg = document.getElementById("hero-neg");
-    var clone = pos.cloneNode(true);
-    clone.removeAttribute("id");
-    clone.setAttribute("aria-hidden", "true");
-    clone.setAttribute("inert", "");
-    clone.querySelectorAll("a,button").forEach(function (e) { e.tabIndex = -1; });
-    clone.querySelectorAll("img[data-neg]").forEach(function (i) { i.src = i.getAttribute("data-neg"); i.removeAttribute("fetchpriority"); });
-    neg.appendChild(clone);
-
+    // Lente negativo: un círculo que invierte todo lo que hay detrás y sigue al puntero en todo el sitio
+    var lens = document.getElementById("lens");
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var rect, R, x, y, tx, ty, visible = true, intro = !reduce, t0 = null, raf = null;
+    var ok = (window.CSS && CSS.supports && (CSS.supports("backdrop-filter", "invert(1)") || CSS.supports("-webkit-backdrop-filter", "invert(1)")));
+    var fine = window.matchMedia("(pointer: fine)").matches;
+    if (!ok) { lens.style.display = "none"; }
+    var R = 100, x = -999, y = -999, tx, ty, s = 0, ts = 0, raf = null, intro = ok && !reduce, t0 = null;
 
-    function measure() {
-      rect = stack.getBoundingClientRect();
-      R = Math.max(90, Math.min(rect.width, rect.height) * 0.24);
+    function size() {
+      R = Math.max(80, Math.min(170, Math.min(window.innerWidth, window.innerHeight) * 0.16));
+      lens.style.width = lens.style.height = (2 * R) + "px";
     }
-    function draw() { neg.style.clipPath = "circle(" + R + "px at " + x + "px " + y + "px)"; }
-    function startPoint() { return { x: rect.width * 0.5, y: Math.min(rect.height * 0.45, rect.height - R) }; }
-
-    measure();
-    var p = startPoint(); x = tx = p.x; y = ty = p.y;
-    if (reduce) { draw(); }
+    function draw() { lens.style.transform = "translate3d(" + (x - R) + "px," + (y - R) + "px,0) scale(" + s + ")"; }
+    size();
+    tx = window.innerWidth / 2; ty = window.innerHeight * 0.45;
+    if (fine) { ts = 1; }
+    if (!intro) { x = tx; y = ty; s = ts; draw(); }
 
     function frame(t) {
       raf = null;
-      if (!visible) return;
       if (intro) {
         if (t0 === null) t0 = t;
         var k = Math.min(1, (t - t0) / 1900);
         var e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-        x = -R + e * (rect.width + 2 * R);
-        y = rect.height * 0.42;
-        draw();
-        if (k >= 1) { intro = false; x = tx = rect.width * 0.5; y = ty = rect.height * 0.45; }
+        x = -R + e * (window.innerWidth + 2 * R);
+        y = window.innerHeight * 0.42;
+        s = 1; draw();
+        if (k >= 1) { intro = false; }
         raf = requestAnimationFrame(frame);
         return;
       }
-      x += (tx - x) * 0.14;
-      y += (ty - y) * 0.14;
+      var f = reduce ? 1 : 0.16;
+      x += (tx - x) * f; y += (ty - y) * f; s += (ts - s) * f;
       draw();
-      if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5) raf = requestAnimationFrame(frame);
+      if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5 || Math.abs(ts - s) > 0.005) raf = requestAnimationFrame(frame);
     }
-    function kick() { if (!raf && visible) raf = requestAnimationFrame(frame); }
+    function kick() { if (ok && !raf) raf = requestAnimationFrame(frame); }
 
-    function aim(ev) {
-      var r = stack.getBoundingClientRect();
-      tx = ev.clientX - r.left; ty = ev.clientY - r.top;
-      if (reduce) { x = tx; y = ty; draw(); } else if (!intro) { kick(); }
+    document.addEventListener("pointermove", function (e) { tx = e.clientX; ty = e.clientY; ts = 1; kick(); }, { passive: true });
+    document.addEventListener("pointerdown", function (e) { tx = e.clientX; ty = e.clientY; ts = 1; kick(); }, { passive: true });
+    document.addEventListener("pointerup", function (e) { if (e.pointerType === "touch") { ts = 0; kick(); } }, { passive: true });
+    document.addEventListener("pointercancel", function () { ts = 0; kick(); }, { passive: true });
+    document.documentElement.addEventListener("mouseleave", function () { ts = 0; kick(); });
+    window.addEventListener("resize", function () { size(); kick(); });
+    kick();
+
+    // Collage de Universo: leve desplazamiento al hacer scroll
+    var collage = document.getElementById("collage");
+    if (collage && !reduce) {
+      var imgs = collage.querySelectorAll(".c"), pend = false;
+      function par() {
+        pend = false;
+        var r = collage.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+        var off = (r.top + r.height / 2) - window.innerHeight / 2;
+        for (var n = 0; n < imgs.length; n++) imgs[n].style.setProperty("--py", off + "px");
+      }
+      window.addEventListener("scroll", function () { if (!pend) { pend = true; requestAnimationFrame(par); } }, { passive: true });
+      par();
     }
-    stack.addEventListener("pointermove", aim);
-    stack.addEventListener("pointerdown", aim);
-
-    new IntersectionObserver(function (en) {
-      visible = en[0].isIntersecting;
-      if (visible) { measure(); kick(); }
-    }, { threshold: 0 }).observe(stack);
-    window.addEventListener("resize", function () { measure(); if (!intro) { draw(); } });
-
-    if (!reduce) { kick(); }
   })();
 </script>
 </body>
