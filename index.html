@@ -61,7 +61,7 @@
     font-family: var(--display);
     font-stretch: 50%;
     font-weight: 900;
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-size: clamp(2.2rem, 4.4vw, 3.5rem);
     line-height: .9;
     letter-spacing: 0;
   }
@@ -170,14 +170,15 @@
   .c-meridianos { right: 0; top: 2%; height: 72%; width: auto; opacity: .9; }
   .c-anatomia { left: 64vw; top: 40%; width: 24vw; }
   .c-figuras { left: 2vw; top: 62%; width: 30vw; }
-  .uni { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(.8rem, 2vw, 1.6rem); row-gap: clamp(1rem, 2vw, 1.6rem); align-items: start; }
-  .uni .universe-copy { grid-column: 1 / 5; grid-row: 1 / 3; }
-  .uni .video--stack { grid-column: 5 / 13; grid-row: 1; }
-  .uni .ig--feed { grid-column: 6 / 9; grid-row: 2; }
-  .uni .ig--post { grid-column: 10 / 13; grid-row: 2; margin-top: clamp(1.2rem, 3vw, 2.6rem); }
-  .ig { margin: 0; border: 1px solid #fff; background: #000; }
-  .ig iframe { display: block; width: 100%; aspect-ratio: 3 / 4; height: auto; border: 0; background: #fff; }
-  .ig figcaption { padding: .5rem .7rem; font-family: var(--mono); font-size: .7rem; line-height: 1.4; border-top: 1px solid #fff; }
+  .uni { display: grid; gap: clamp(1.4rem, 3vw, 2.4rem); }
+  .uni-top { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.2rem, 4vw, 3.5rem); align-items: start; }
+  .uni-top .big { margin: 0; }
+  .uni-top .rest:last-child { margin-bottom: 0; }
+  .uni-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(1rem, 2.4vw, 2rem); align-items: start; }
+  .ig-pair { display: flex; gap: clamp(1rem, 2.4vw, 2rem); align-items: flex-start; }
+  .ig { margin: 0; flex: none; width: 310px; border: 1px solid #fff; background: #000; }
+  .ig iframe { display: block; width: 100%; height: 410px; border: 0; background: #fff; }
+  .ig figcaption { padding: .5rem .7rem; font-family: var(--mono); font-size: .7rem; line-height: 1.4; border-top: 1px solid #fff; min-height: 3.4rem; }
   .universe-copy .big { font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.4; font-weight: 500; margin: 0 0 1.4rem; }
   .universe-copy .rest { font-size: 1rem; margin: 0 0 1rem; max-width: 44ch; }
   .video { margin: 0; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.2rem, 3vw, 2.5rem); align-items: center; max-width: 64rem; }
@@ -207,27 +208,22 @@
   .lb-btns button { font: inherit; font-family: var(--display); font-stretch: 80%; font-weight: 700; color: #fff; background: #000; border: 2px solid #fff; padding: .5rem 1rem; cursor: pointer; }
   .lb-btns button:hover { background: #fff; color: #000; }
 
-  /* En vivo: tres tarjetas verticales; el texto se despliega dentro de cada una */
-  .fmts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 2px solid #fff; }
-  .fmt { display: flex; flex-direction: column; border-right: 2px solid #fff; --bg: #fff; --fg: #000; background: #fff; color: #000; }
-  .fmt:last-child { border-right: 0; }
+  /* En vivo: tres tarjetas verticales con todo el texto a la vista; se invierten al pasar encima */
+  .fmts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 1.6vw, 1.4rem); }
+  .fmt { display: flex; flex-direction: column; gap: 1.4rem; padding: clamp(1.1rem, 2vw, 1.8rem); border: 2px solid #fff; --bg: #fff; --fg: #000; background: #fff; color: #000; transition: background-color .3s, color .3s; }
   .fmt--b { --bg: #000; --fg: #fff; background: #000; color: #fff; }
-  .fmt-btn { position: relative; flex: 1 1 auto; min-height: 32rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.2rem; padding: clamp(1rem, 1.8vw, 1.6rem); font: inherit; color: inherit; background: transparent; border: 0; text-align: left; cursor: pointer; transition: min-height .45s ease; }
-  .fmt.open .fmt-btn { min-height: 11rem; flex: 0 0 auto; }
-  .fmt-letter { font-family: var(--display); font-stretch: 50%; font-weight: 900; font-size: clamp(5rem, 9vw, 8rem); line-height: .8; transition: font-size .45s ease; }
-  .fmt.open .fmt-letter { font-size: 3.6rem; }
-  .fmt-name { display: block; font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1; }
-  .fmt-dur { display: block; margin-top: .45rem; font-family: var(--mono); font-size: .8rem; line-height: 1.2; }
-  .fmt-plus { position: absolute; top: .8rem; right: 1rem; font-family: var(--display); font-weight: 700; font-size: 1.8rem; line-height: 1; transition: transform .3s; }
-  .fmt.open .fmt-plus { transform: rotate(45deg); }
-  .fmt-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
-  .fmt.open .fmt-panel { grid-template-rows: 1fr; }
-  .fmt-in { overflow: hidden; min-height: 0; padding: 0 clamp(1rem, 1.8vw, 1.6rem); }
-  .fmt.open .fmt-in { padding-bottom: clamp(1rem, 1.8vw, 1.6rem); border-top: 2px solid currentColor; padding-top: 1rem; }
-  .fmt-in p { margin: 0 0 .9em; font-size: .98rem; line-height: 1.5; }
-  .fmt-in ul { margin: 0 0 1.2rem; padding-left: 1.1rem; font-size: .95rem; }
-  .fmt-in li { margin: 0 0 .2rem; }
-  .fmt-in .btn { padding: .6rem 1.1rem; font-size: 1rem; }
+  .fmt:hover, .fmt:focus-within { --bg: #000; --fg: #fff; background: #000; color: #fff; }
+  .fmt--b:hover, .fmt--b:focus-within { --bg: #fff; --fg: #000; background: #fff; color: #000; }
+  .fmt-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 2px solid currentColor; }
+  .fmt-letter { font-family: var(--display); font-stretch: 50%; font-weight: 900; font-size: clamp(4rem, 6vw, 5.5rem); line-height: .8; }
+  .fmt-title { text-align: right; }
+  .fmt-name { display: block; font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: clamp(1.4rem, 2.2vw, 2rem); line-height: 1; }
+  .fmt-dur { display: block; margin-top: .45rem; font-family: var(--mono); font-size: .78rem; line-height: 1.2; }
+  .fmt-body { display: flex; flex-direction: column; flex: 1 1 auto; }
+  .fmt-body p { margin: 0 0 .9em; font-size: .98rem; line-height: 1.5; }
+  .fmt-body ul { margin: 0 0 1.4rem; padding-left: 1.1rem; font-size: .95rem; }
+  .fmt-body li { margin: 0 0 .2rem; }
+  .fmt-body .btn { margin-top: auto; align-self: flex-start; padding: .6rem 1.1rem; font-size: 1rem; }
 
   /* Lente negativo: sigue el puntero en todo el sitio */
   .lens {
@@ -256,8 +252,13 @@
   .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
   .foot img { width: min(100%, 520px); }
 
+@media (max-width: 1180px) {
+    .uni-row { grid-template-columns: minmax(0, 1fr); }
+    .ig-pair .ig { flex: 1 1 0; width: auto; min-width: 0; }
+    .ig iframe { height: 520px; }
+  }
 @media (max-width: 820px) {
-    .uni, .video, .release, .release--flip, .book { grid-template-columns: minmax(0, 1fr); }
+    .video, .release, .release--flip, .book { grid-template-columns: minmax(0, 1fr); }
     .release--flip .cover { order: 0; }
     .c-carta { left: -10vw; top: 2%; width: 70vw; }
     .c-cabeza { left: 60vw; top: 1%; width: 36vw; }
@@ -265,17 +266,12 @@
     .c-anatomia { left: 30vw; top: 62%; width: 60vw; }
     .c-figuras { left: -4vw; top: 82%; width: 66vw; }
     .uni-media { min-width: 0; }
-    .uni .universe-copy, .uni .video--stack, .uni .ig--feed, .uni .ig--post { grid-column: 1 / -1; grid-row: auto; margin-top: 0; }
-    .uni .ig--feed, .uni .ig--post { width: 78%; }
-    .uni .ig--post { justify-self: end; }
+    .uni-top, .uni-row { grid-template-columns: minmax(0, 1fr); }
+    .ig-pair { overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .4rem; }
+    .ig-pair .ig { flex: 0 0 min(88%, 340px); width: auto; scroll-snap-align: start; }
+    .ig iframe { height: 460px; }
     .shot, .shot:nth-child(2), .shot:nth-child(3), .shot:nth-child(4) { height: 150px; }
     .fmts { grid-template-columns: minmax(0, 1fr); }
-    .fmt { border-right: 0; border-bottom: 2px solid #fff; }
-    .fmt:last-child { border-bottom: 0; }
-    .fmt-btn, .fmt.open .fmt-btn { min-height: 0; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; padding: 1rem; }
-    .fmt-letter, .fmt.open .fmt-letter { font-size: 3.2rem; }
-    .fmt-plus { top: 50%; transform: translateY(-50%); }
-    .fmt.open .fmt-plus { transform: translateY(-50%) rotate(45deg); }
     .nav .mini { display: none; }
     .nav { padding-top: .7rem; padding-bottom: .7rem; }
     .nav ul { width: 100%; justify-content: space-between; flex-wrap: nowrap; gap: .3rem; }
@@ -339,11 +335,14 @@
   </div>
   <h2 id="t-universo">Universo</h2>
   <div class="uni">
-    <div class="universe-copy">
+    <div class="uni-top universe-copy">
       <p class="big">Nicto, estilizado también NICTO, es un proyecto musical y performático independiente de Chile. Se gesta desde 2020 y se lanza en 2026 con «SÍNTESIS», su sencillo debut doble que también incluye la introducción «OM».</p>
-      <p class="rest">Es autoproducido por su autor, el músico y periodista talquino César C. Montecino, combinando composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y la catarsis.</p>
-      <p class="rest">Nicto piensa el formato en vivo sobre el escenario como un espacio ritual para contar historias y expresar sentimientos complejos a partir del canto, la danza y la performance.</p>
+      <div>
+        <p class="rest">Es autoproducido por su autor, el músico y periodista talquino César C. Montecino, combinando composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y la catarsis.</p>
+        <p class="rest">Nicto piensa el formato en vivo sobre el escenario como un espacio ritual para contar historias y expresar sentimientos complejos a partir del canto, la danza y la performance.</p>
+      </div>
     </div>
+    <div class="uni-row">
       <figure class="video video--stack">
         <div class="frame">
           <iframe src="https://www.youtube-nocookie.com/embed/J7MSzULZTTc" title="Sesión PERFOTIKA X NICTO | SÍNTESIS" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -353,14 +352,17 @@
           <p>Sesión estrenada en 2026, producida por House of Chields. <a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Ver en YouTube</a></p>
         </figcaption>
       </figure>
-        <figure class="ig ig--feed">
+      <div class="ig-pair">
+        <figure class="ig">
           <iframe src="https://www.instagram.com/nicto.cc/embed/" title="Feed de Instagram de @nicto.cc" loading="lazy"></iframe>
           <figcaption><a href="https://www.instagram.com/nicto.cc/" target="_blank" rel="noopener">@nicto.cc en Instagram</a></figcaption>
         </figure>
-        <figure class="ig ig--post">
+        <figure class="ig">
           <iframe src="https://www.instagram.com/p/DfYPG4SG4nm/embed/" title="Carrusel de Instagram con registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026)" loading="lazy"></iframe>
           <figcaption>Registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026).</figcaption>
         </figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -422,13 +424,12 @@
   <p class="lead">Tres formatos para distintas experiencias: un show performático, un DJ set y una propuesta híbrida para la pista de baile.</p>
 
   <div class="fmts" id="fmts">
-    <article class="fmt fmt--a">
-      <button class="fmt-btn" type="button" id="b-a" aria-expanded="false" aria-controls="p-a">
+    <article class="fmt fmt--a" tabindex="0">
+      <div class="fmt-head">
         <span class="fmt-letter" aria-hidden="true">A</span>
-        <span><span class="fmt-name">Show en vivo</span><span class="fmt-dur">20 a 40 minutos</span></span>
-        <span class="fmt-plus" aria-hidden="true">+</span>
-      </button>
-      <div class="fmt-panel" id="p-a" role="region" aria-labelledby="b-a" inert><div class="fmt-in">
+        <h3 class="fmt-title"><span class="fmt-name">Show en vivo</span><span class="fmt-dur">20 a 40 minutos</span></h3>
+      </div>
+      <div class="fmt-body">
         <p>Una presentación performática, bailable e intensa. NICTO presenta su repertorio original mediante una puesta en escena que combina electrónica, voz, cuerpo y recursos visuales. Una experiencia concebida para espacios nocturnos, festivales y escenarios donde la música y la performance dialogan y conectan con el público.</p>
         <ul>
           <li>Repertorio original.</li>
@@ -437,31 +438,27 @@
           <li>Recursos visuales.</li>
         </ul>
         <a class="btn" href="#booking" data-format="Show en vivo">Consultar disponibilidad</a>
-      </div></div>
+      </div>
     </article>
-
-    <article class="fmt fmt--b">
-      <button class="fmt-btn" type="button" id="b-b" aria-expanded="false" aria-controls="p-b">
+    <article class="fmt fmt--b" tabindex="0">
+      <div class="fmt-head">
         <span class="fmt-letter" aria-hidden="true">B</span>
-        <span><span class="fmt-name">DJ set</span><span class="fmt-dur">40 min a 3 horas</span></span>
-        <span class="fmt-plus" aria-hidden="true">+</span>
-      </button>
-      <div class="fmt-panel" id="p-b" role="region" aria-labelledby="b-b" inert><div class="fmt-in">
+        <h3 class="fmt-title"><span class="fmt-name">DJ set</span><span class="fmt-dur">40 min a 3 horas</span></h3>
+      </div>
+      <div class="fmt-body">
         <p>Un recorrido por el pop, la electrónica y la escena queer a partir de influencias musicales de NICTO. Una selección musical para la pista de baile que incorpora clásicos del pop, el house, el disco y la electrónica, así como rarezas, nuevos lanzamientos y recomendaciones de carácter personal, incluyendo siempre una buena dosis de música chilena.</p>
         <ul>
           <li>Selección musical curada para cada ocasión.</li>
         </ul>
         <a class="btn" href="#booking" data-format="DJ set">Consultar disponibilidad</a>
-      </div></div>
+      </div>
     </article>
-
-    <article class="fmt fmt--c">
-      <button class="fmt-btn" type="button" id="b-c" aria-expanded="false" aria-controls="p-c">
+    <article class="fmt fmt--c" tabindex="0">
+      <div class="fmt-head">
         <span class="fmt-letter" aria-hidden="true">C</span>
-        <span><span class="fmt-name">Hybrid set</span><span class="fmt-dur">40 minutos a 3 horas</span></span>
-        <span class="fmt-plus" aria-hidden="true">+</span>
-      </button>
-      <div class="fmt-panel" id="p-c" role="region" aria-labelledby="b-c" inert><div class="fmt-in">
+        <h3 class="fmt-title"><span class="fmt-name">Hybrid set</span><span class="fmt-dur">40 minutos a 3 horas</span></h3>
+      </div>
+      <div class="fmt-body">
         <p>Una experiencia que combina la mezcla musical en vivo con interpretaciones vocales de canciones originales de NICTO. Una propuesta híbrida que conecta la energía de la cabina con la presencia performática del artista. Es el formato de «Una noche electropop».</p>
         <ul>
           <li>Mezcla musical en vivo.</li>
@@ -469,7 +466,7 @@
           <li>Experiencia híbrida entre DJ set y show en vivo.</li>
         </ul>
         <a class="btn" href="#booking" data-format="Hybrid set">Consultar disponibilidad</a>
-      </div></div>
+      </div>
     </article>
   </div>
 </section>
@@ -564,21 +561,6 @@
       window.location.href = "mailto:" + BOOKING_EMAIL + "?subject=" + encodeURIComponent("Booking NICTO: " + f.tipo.value) + "&body=" + encodeURIComponent(body);
     });
     }
-
-    // ---------- Tarjetas de formatos
-    var cards = document.querySelectorAll(".fmt");
-    cards.forEach(function (c) {
-      var btn = c.querySelector(".fmt-btn"), panel = c.querySelector(".fmt-panel");
-      btn.addEventListener("click", function () {
-        var open = !c.classList.contains("open");
-        cards.forEach(function (o) {
-          o.classList.remove("open");
-          o.querySelector(".fmt-btn").setAttribute("aria-expanded", "false");
-          o.querySelector(".fmt-panel").inert = true;
-        });
-        if (open) { c.classList.add("open"); btn.setAttribute("aria-expanded", "true"); panel.inert = false; }
-      });
-    });
 
     // ---------- Galería con lightbox
     function renderGallery(items) {
