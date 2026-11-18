@@ -18,7 +18,7 @@
 <link rel="icon" href="/assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Archivo:wdth,wght@62..125,300..800&family=Chivo+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MusicGroup","name":"NICTO","url":"https://nictomusica.vercel.app/","sameAs":["https://open.spotify.com/intl-es/artist/7tOOxVVu8GvyebUSOocF6V","https://www.instagram.com/nicto.cc/"]}
 </script>
@@ -27,7 +27,8 @@
   :root {
     --gutter: clamp(1rem, 4vw, 3.5rem);
     --display: "Anybody", "Arial Narrow", Impact, sans-serif;
-    --text: "Literata", Georgia, serif;
+    --text: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Chivo Mono", ui-monospace, monospace;
   }
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -36,8 +37,8 @@
     background: #000;
     color: #fff;
     font-family: var(--text);
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; }
@@ -50,38 +51,29 @@
   .skip:focus { left: 0; }
 
   /* Bandas: positivo (blanco) y negativo (negro) */
-  .band { padding: clamp(5rem, 11vw, 9rem) var(--gutter); }
+  .band { padding: clamp(2.6rem, 5vw, 4.2rem) var(--gutter); }
   .band--pos { --bg: #fff; --fg: #000; background: var(--bg); color: var(--fg); }
   .band--neg { --bg: #000; --fg: #fff; background: var(--bg); color: var(--fg); }
 
   .band h2 {
-    margin: 0 0 clamp(2rem, 5vw, 4rem);
+    display: flex; align-items: center; gap: 1.2rem;
+    margin: 0 0 clamp(1.2rem, 2.2vw, 2rem);
     font-family: var(--display);
     font-stretch: 50%;
     font-weight: 900;
-    font-size: clamp(5rem, 22vw, 17rem);
-    line-height: .82;
-    letter-spacing: -.01em;
-    margin-left: -.04em;
-  }
-  .band h2 .upd {
-    font-family: var(--text);
-    font-stretch: 100%;
-    font-weight: 400;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: .9;
     letter-spacing: 0;
-    margin-left: .5rem;
-    vertical-align: .55em;
   }
-  .lead { max-width: 34ch; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.35; margin: 0 0 2.5rem; }
+  .band h2::after { content: ""; flex: 1; height: 1px; background: currentColor; }
+  .lead { max-width: 44ch; font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.4; margin: 0 0 1.6rem; }
   .prose { max-width: 58ch; }
   .prose p { margin: 0 0 1.2em; }
   h3 {
     font-family: var(--display);
     font-stretch: 85%;
     font-weight: 800;
-    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
     line-height: 1;
     margin: 0 0 .7rem;
   }
@@ -122,26 +114,23 @@
   /* Portada con lente negativo */
   .hero { padding: 0; overflow: hidden; }
   .hero-stack { position: relative; }
-  .hero-content {
-    min-height: 100svh;
-    padding: 6rem var(--gutter) 2.5rem;
-    display: flex; flex-direction: column;
-  }
-  .hero .mark { width: min(100%, 40svh); margin: 0 0 1.2rem 2%; align-self: flex-start; }
-  .hero-banner { width: calc(100% + 2 * var(--gutter)); max-width: none; margin: 0 calc(-1 * var(--gutter)) 1.5rem; height: clamp(150px, 32svh, 340px); object-fit: cover; object-position: center 35%; }
+  .hero-content { height: 100svh; min-height: 540px; padding: 3.6rem var(--gutter) 1.4rem; display: flex; flex-direction: column; gap: 1.1rem; }
+  .hero-row { display: grid; grid-template-columns: 2fr 4fr; grid-template-rows: minmax(0, 1fr); margin: 0 calc(-1 * var(--gutter)); height: clamp(170px, 46svh, 460px); flex: none; overflow: hidden; }
+  .hero .mark { width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: left center; padding: 0 clamp(.8rem, 2vw, 2rem) 0 var(--gutter); }
+  .hero-banner { width: 100%; height: 100%; min-height: 0; max-width: none; object-fit: cover; object-position: center 22%; }
   .hero-foot { margin-top: auto; }
   .hero-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem 3rem; flex-wrap: wrap; }
-  .tagline { margin: 0; max-width: 34ch; font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.4; }
+  
 
 
   .btn[aria-disabled="true"] { opacity: .55; cursor: default; }
   .btn[aria-disabled="true"]:hover { background: transparent; color: inherit; }
   .btn small { font-family: var(--text); font-stretch: 100%; font-weight: 400; font-size: .8rem; margin-left: .4rem; }
   .hero-text { max-width: 44ch; }
-  .tagline { margin: 0 0 .8rem; }
-  .tagline-q { margin: 0; font-style: italic; font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.5; opacity: .85; }
+  .tagline { margin: 0 0 .7rem; font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.3; font-weight: 500; }
+  .tagline-q { margin: 0; font-family: var(--mono); font-size: clamp(.8rem, 1.1vw, .92rem); line-height: 1.55; opacity: .85; }
   h2.sub { font-family: var(--display); font-stretch: 70%; font-weight: 800; font-size: clamp(2rem, 5vw, 3.6rem); line-height: .95; margin: 0 0 2rem; }
-  h3.sub-h { font-size: clamp(1.6rem, 3vw, 2.4rem); margin: 0 0 1.5rem; }
+  h3.sub-h { font-size: clamp(1.3rem, 2.2vw, 1.8rem); margin: 0 0 1.5rem; }
   .sep { margin-top: clamp(3.5rem, 8vw, 6rem); }
 
   /* Música */
@@ -152,7 +141,7 @@
   .cover { display: block; }
   .cover img { width: 100%; aspect-ratio: 1; object-fit: cover; }
   .release .info p { max-width: 46ch; margin: 0 0 1.2rem; }
-  .credits { margin: 0 0 1.4rem; padding: 0; display: grid; grid-template-columns: max-content 1fr; gap: .15rem 1.2rem; font-size: .95rem; line-height: 1.5; }
+  .credits { font-family: var(--mono); margin: 0 0 1.4rem; padding: 0; display: grid; grid-template-columns: max-content 1fr; gap: .15rem 1.2rem; font-size: .95rem; line-height: 1.5; }
   .credits dt { opacity: .66; }
   .credits dd { margin: 0; }
   .embed { width: 100%; height: 152px; border: 0; border-radius: 0; display: block; background: #000; }
@@ -169,7 +158,7 @@
 /* Universo: collage de fondo, texto, sesión en vivo y tira de fotos */
   .universe { position: relative; overflow: hidden; background: url(assets/bg-explosion.webp) center / cover no-repeat, #000; }
   .universe::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.7); z-index: 1; }
-  .universe > h2, .universe > .universe-grid, .universe > .strip-wrap { position: relative; z-index: 2; }
+  .universe > h2, .universe > .uni { position: relative; z-index: 2; }
   .bgfx { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
   .bgfx .c {
     position: absolute; height: auto; max-width: none;
@@ -181,15 +170,22 @@
   .c-meridianos { right: 0; top: 2%; height: 72%; width: auto; opacity: .9; }
   .c-anatomia { left: 64vw; top: 40%; width: 24vw; }
   .c-figuras { left: 2vw; top: 62%; width: 30vw; }
-  .universe-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-  .universe-copy .big { font-size: clamp(1.3rem, 2.2vw, 1.8rem); line-height: 1.4; margin: 0 0 1.4rem; }
-  .universe-copy .rest { font-size: 1.05rem; margin: 0 0 1rem; max-width: 44ch; }
+  .uni { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(.8rem, 2vw, 1.6rem); row-gap: clamp(1rem, 2vw, 1.6rem); align-items: start; }
+  .uni .universe-copy { grid-column: 1 / 5; grid-row: 1 / 3; }
+  .uni .video--stack { grid-column: 5 / 13; grid-row: 1; }
+  .uni .ig--feed { grid-column: 6 / 9; grid-row: 2; }
+  .uni .ig--post { grid-column: 10 / 13; grid-row: 2; margin-top: clamp(1.2rem, 3vw, 2.6rem); }
+  .ig { margin: 0; border: 1px solid #fff; background: #000; }
+  .ig iframe { display: block; width: 100%; aspect-ratio: 3 / 4; height: auto; border: 0; background: #fff; }
+  .ig figcaption { padding: .5rem .7rem; font-family: var(--mono); font-size: .7rem; line-height: 1.4; border-top: 1px solid #fff; }
+  .universe-copy .big { font-size: clamp(1.15rem, 1.8vw, 1.5rem); line-height: 1.4; font-weight: 500; margin: 0 0 1.4rem; }
+  .universe-copy .rest { font-size: 1rem; margin: 0 0 1rem; max-width: 44ch; }
   .video { margin: 0; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.2rem, 3vw, 2.5rem); align-items: center; max-width: 64rem; }
   .video--stack { grid-template-columns: minmax(0, 1fr); gap: .9rem; max-width: none; }
   .video .frame { position: relative; aspect-ratio: 16 / 9; background: #000; }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .video figcaption p { margin: 0 0 .6rem; max-width: 44ch; }
-  .video figcaption h3 { font-size: clamp(1.4rem, 2.4vw, 2rem); }
+  .video figcaption h3 { font-size: clamp(1.1rem, 1.8vw, 1.45rem); }
   .visualizer { margin-top: clamp(2.5rem, 6vw, 4rem); }
   .strip-wrap h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); margin-bottom: 1rem; }
   .strip { display: flex; align-items: flex-end; gap: clamp(.6rem, 1.4vw, 1.2rem); overflow-x: auto; padding-bottom: .5rem; scroll-snap-type: x proximity; }
@@ -211,31 +207,28 @@
   .lb-btns button { font: inherit; font-family: var(--display); font-stretch: 80%; font-weight: 700; color: #fff; background: #000; border: 2px solid #fff; padding: .5rem 1rem; cursor: pointer; }
   .lb-btns button:hover { background: #fff; color: #000; }
 
-  /* En vivo: tres tarjetas que se abren */
-  .fmts { display: flex; border: 2px solid #fff; margin: 0 0 clamp(2rem, 4vw, 3rem); }
-  .fmt { flex: 1 1 0; min-width: 0; display: flex; transition: flex-grow .5s ease; border-right: 2px solid #fff; --bg: #fff; --fg: #000; background: #fff; color: #000; }
+  /* En vivo: tres tarjetas verticales; el texto se despliega dentro de cada una */
+  .fmts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 2px solid #fff; }
+  .fmt { display: flex; flex-direction: column; border-right: 2px solid #fff; --bg: #fff; --fg: #000; background: #fff; color: #000; }
   .fmt:last-child { border-right: 0; }
   .fmt--b { --bg: #000; --fg: #fff; background: #000; color: #fff; }
-  .fmt.open { flex-grow: 3.2; }
-  .fmt-btn { position: relative; flex: 1 1 auto; min-width: 0; min-height: 24rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; padding: clamp(1.1rem, 2vw, 1.8rem); font: inherit; color: inherit; background: transparent; border: 0; text-align: left; cursor: pointer; }
-  .fmt.open .fmt-btn { flex: 0 0 15rem; }
-  .fmt-letter { font-family: var(--display); font-stretch: 50%; font-weight: 900; font-size: clamp(4.5rem, 9vw, 8rem); line-height: .8; }
-  .fmt-name { display: block; font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: clamp(1.6rem, 2.8vw, 2.4rem); line-height: 1; }
-  .fmt-dur { display: block; margin-top: .5rem; font-family: var(--display); font-stretch: 60%; font-weight: 700; font-size: clamp(1.1rem, 1.8vw, 1.5rem); line-height: 1; }
-  .fmt-plus { position: absolute; top: .9rem; right: 1rem; font-family: var(--display); font-weight: 700; font-size: 1.8rem; line-height: 1; transition: transform .3s; }
+  .fmt-btn { position: relative; flex: 1 1 auto; min-height: 32rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.2rem; padding: clamp(1rem, 1.8vw, 1.6rem); font: inherit; color: inherit; background: transparent; border: 0; text-align: left; cursor: pointer; transition: min-height .45s ease; }
+  .fmt.open .fmt-btn { min-height: 11rem; flex: 0 0 auto; }
+  .fmt-letter { font-family: var(--display); font-stretch: 50%; font-weight: 900; font-size: clamp(5rem, 9vw, 8rem); line-height: .8; transition: font-size .45s ease; }
+  .fmt.open .fmt-letter { font-size: 3.6rem; }
+  .fmt-name { display: block; font-family: var(--display); font-stretch: 85%; font-weight: 800; font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1; }
+  .fmt-dur { display: block; margin-top: .45rem; font-family: var(--mono); font-size: .8rem; line-height: 1.2; }
+  .fmt-plus { position: absolute; top: .8rem; right: 1rem; font-family: var(--display); font-weight: 700; font-size: 1.8rem; line-height: 1; transition: transform .3s; }
   .fmt.open .fmt-plus { transform: rotate(45deg); }
-  .fmt-panel { flex: 1 1 0; min-width: 0; padding: clamp(1.1rem, 2vw, 1.8rem) clamp(1.1rem, 2vw, 1.8rem) clamp(1.1rem, 2vw, 1.8rem) 0; border-left: 2px solid currentColor; padding-left: clamp(1.1rem, 2vw, 1.8rem); display: flex; flex-direction: column; justify-content: center; }
-  .fmt-panel[hidden] { display: none; }
-  .fmt-panel p { margin: 0 0 1em; max-width: 52ch; }
-  .fmt-panel ul { margin: 0 0 1.4rem; padding-left: 1.1rem; }
-  .fmt-panel li { margin: 0 0 .2rem; }
-  .fmt-panel .btn { align-self: flex-start; }
-  .ig-row { display: flex; flex-wrap: wrap; gap: clamp(1rem, 2.5vw, 2rem); align-items: flex-start; }
-  .ig-box { margin: 0; flex: 1 1 320px; max-width: 500px; }
-  .ig-box iframe { width: 100%; height: 440px; border: 0; display: block; background: #fff; }
-  .ig-box figcaption { margin-top: .5rem; font-size: .9rem; line-height: 1.45; }
+  .fmt-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+  .fmt.open .fmt-panel { grid-template-rows: 1fr; }
+  .fmt-in { overflow: hidden; min-height: 0; padding: 0 clamp(1rem, 1.8vw, 1.6rem); }
+  .fmt.open .fmt-in { padding-bottom: clamp(1rem, 1.8vw, 1.6rem); border-top: 2px solid currentColor; padding-top: 1rem; }
+  .fmt-in p { margin: 0 0 .9em; font-size: .98rem; line-height: 1.5; }
+  .fmt-in ul { margin: 0 0 1.2rem; padding-left: 1.1rem; font-size: .95rem; }
+  .fmt-in li { margin: 0 0 .2rem; }
+  .fmt-in .btn { padding: .6rem 1.1rem; font-size: 1rem; }
 
-  
   /* Lente negativo: sigue el puntero en todo el sitio */
   .lens {
     position: fixed; left: 0; top: 0; z-index: 60;
@@ -264,29 +257,32 @@
   .foot img { width: min(100%, 520px); }
 
 @media (max-width: 820px) {
-    .universe-grid, .video, .release, .release--flip, .book { grid-template-columns: minmax(0, 1fr); }
+    .uni, .video, .release, .release--flip, .book { grid-template-columns: minmax(0, 1fr); }
     .release--flip .cover { order: 0; }
     .c-carta { left: -10vw; top: 2%; width: 70vw; }
     .c-cabeza { left: 60vw; top: 1%; width: 36vw; }
     .c-meridianos { right: -6vw; top: 30%; height: 38%; }
     .c-anatomia { left: 30vw; top: 62%; width: 60vw; }
     .c-figuras { left: -4vw; top: 82%; width: 66vw; }
+    .uni-media { min-width: 0; }
+    .uni .universe-copy, .uni .video--stack, .uni .ig--feed, .uni .ig--post { grid-column: 1 / -1; grid-row: auto; margin-top: 0; }
+    .uni .ig--feed, .uni .ig--post { width: 78%; }
+    .uni .ig--post { justify-self: end; }
     .shot, .shot:nth-child(2), .shot:nth-child(3), .shot:nth-child(4) { height: 150px; }
-    .fmts { flex-direction: column; }
-    .fmt { flex: none; flex-direction: column; border-right: 0; border-bottom: 2px solid #fff; }
+    .fmts { grid-template-columns: minmax(0, 1fr); }
+    .fmt { border-right: 0; border-bottom: 2px solid #fff; }
     .fmt:last-child { border-bottom: 0; }
-    .fmt.open { flex-grow: 0; }
-    .fmt-btn { min-height: 0; flex-direction: row; align-items: center; gap: 1rem; padding: 1rem; }
-    .fmt.open .fmt-btn { flex: none; }
-    .fmt-letter { font-size: 3.5rem; }
+    .fmt-btn, .fmt.open .fmt-btn { min-height: 0; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; padding: 1rem; }
+    .fmt-letter, .fmt.open .fmt-letter { font-size: 3.2rem; }
     .fmt-plus { top: 50%; transform: translateY(-50%); }
     .fmt.open .fmt-plus { transform: translateY(-50%) rotate(45deg); }
-    .fmt-panel { border-left: 0; border-top: 2px solid currentColor; padding: 1rem; }
     .nav .mini { display: none; }
     .nav { padding-top: .7rem; padding-bottom: .7rem; }
     .nav ul { width: 100%; justify-content: space-between; flex-wrap: nowrap; gap: .3rem; }
     .nav a { font-size: .95rem; }
-    .hero .mark { width: min(70%, 40svh); margin-left: 0; }
+    .hero-row { grid-template-columns: minmax(0,1fr); grid-template-rows: auto 30svh; height: auto; }
+    .hero .mark { height: 84px; padding: 0 var(--gutter) .8rem; }
+    .hero-banner { height: 30svh; }
   }
   
   @media (prefers-reduced-motion: reduce) {
@@ -313,8 +309,10 @@
   <h1 class="sr-only">NICTO</h1>
   <div class="hero-stack">
     <div class="hero-content">
-      <img class="mark" src="assets/logo-negro.png" alt="NICTO" width="2345" height="1523" fetchpriority="high">
-      <img class="hero-banner" src="assets/banner-anatomia.webp" alt="Collage repetido de un torso a medias esqueleto y a medias piel, con puntos y trazos marcados" width="2400" height="1029">
+      <div class="hero-row">
+        <img class="mark" src="assets/logo-negro.png" alt="NICTO" width="2345" height="1523" fetchpriority="high">
+        <img class="hero-banner" src="assets/banner-anatomia.webp" alt="Collage repetido de un torso a medias esqueleto y a medias piel, con puntos y trazos marcados" width="1576" height="1029">
+      </div>
       <div class="hero-foot">
         <div class="hero-text">
           <p class="tagline">Proyecto musical electrónico de Chile. Performance en vivo y DJ Set.</p>
@@ -340,25 +338,29 @@
     <img class="c c-figuras" src="assets/cut-figuras.webp" alt="" style="--r:3deg;--s:.12" width="1100" height="762" loading="lazy">
   </div>
   <h2 id="t-universo">Universo</h2>
-  <div class="universe-grid">
+  <div class="uni">
     <div class="universe-copy">
       <p class="big">Nicto, estilizado también NICTO, es un proyecto musical y performático independiente de Chile. Se gesta desde 2020 y se lanza en 2026 con «SÍNTESIS», su sencillo debut doble que también incluye la introducción «OM».</p>
       <p class="rest">Es autoproducido por su autor, el músico y periodista talquino César C. Montecino, combinando composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y la catarsis.</p>
       <p class="rest">Nicto piensa el formato en vivo sobre el escenario como un espacio ritual para contar historias y expresar sentimientos complejos a partir del canto, la danza y la performance.</p>
     </div>
-    <figure class="video video--stack">
-      <div class="frame">
-        <iframe src="https://www.youtube-nocookie.com/embed/J7MSzULZTTc" title="PERFOTIKA X NICTO, sesión en vivo" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-      <figcaption>
-        <h3>PERFOTIKA X NICTO</h3>
-        <p>Sesión estrenada en 2026, producida por House of Chields. <a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Verla en YouTube</a></p>
-      </figcaption>
-    </figure>
-  </div>
-  <div class="strip-wrap" id="galeria-wrap" hidden>
-    <h3 id="t-galeria">Presentaciones en vivo</h3>
-    <div class="strip" id="galeria" role="list"></div>
+      <figure class="video video--stack">
+        <div class="frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/J7MSzULZTTc" title="Sesión PERFOTIKA X NICTO | SÍNTESIS" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <figcaption>
+          <h3>SESIÓN PERFOTIKA X NICTO | SÍNTESIS</h3>
+          <p>Sesión estrenada en 2026, producida por House of Chields. <a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Ver en YouTube</a></p>
+        </figcaption>
+      </figure>
+        <figure class="ig ig--feed">
+          <iframe src="https://www.instagram.com/nicto.cc/embed/" title="Feed de Instagram de @nicto.cc" loading="lazy"></iframe>
+          <figcaption><a href="https://www.instagram.com/nicto.cc/" target="_blank" rel="noopener">@nicto.cc en Instagram</a></figcaption>
+        </figure>
+        <figure class="ig ig--post">
+          <iframe src="https://www.instagram.com/p/DfYPG4SG4nm/embed/" title="Carrusel de Instagram con registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026)" loading="lazy"></iframe>
+          <figcaption>Registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026).</figcaption>
+        </figure>
   </div>
 </section>
 
@@ -426,7 +428,7 @@
         <span><span class="fmt-name">Show en vivo</span><span class="fmt-dur">20 a 40 minutos</span></span>
         <span class="fmt-plus" aria-hidden="true">+</span>
       </button>
-      <div class="fmt-panel" id="p-a" role="region" aria-labelledby="b-a" hidden>
+      <div class="fmt-panel" id="p-a" role="region" aria-labelledby="b-a" inert><div class="fmt-in">
         <p>Una presentación performática, bailable e intensa. NICTO presenta su repertorio original mediante una puesta en escena que combina electrónica, voz, cuerpo y recursos visuales. Una experiencia concebida para espacios nocturnos, festivales y escenarios donde la música y la performance dialogan y conectan con el público.</p>
         <ul>
           <li>Repertorio original.</li>
@@ -435,7 +437,7 @@
           <li>Recursos visuales.</li>
         </ul>
         <a class="btn" href="#booking" data-format="Show en vivo">Consultar disponibilidad</a>
-      </div>
+      </div></div>
     </article>
 
     <article class="fmt fmt--b">
@@ -444,13 +446,13 @@
         <span><span class="fmt-name">DJ set</span><span class="fmt-dur">40 min a 3 horas</span></span>
         <span class="fmt-plus" aria-hidden="true">+</span>
       </button>
-      <div class="fmt-panel" id="p-b" role="region" aria-labelledby="b-b" hidden>
+      <div class="fmt-panel" id="p-b" role="region" aria-labelledby="b-b" inert><div class="fmt-in">
         <p>Un recorrido por el pop, la electrónica y la escena queer a partir de influencias musicales de NICTO. Una selección musical para la pista de baile que incorpora clásicos del pop, el house, el disco y la electrónica, así como rarezas, nuevos lanzamientos y recomendaciones de carácter personal, incluyendo siempre una buena dosis de música chilena.</p>
         <ul>
           <li>Selección musical curada para cada ocasión.</li>
         </ul>
         <a class="btn" href="#booking" data-format="DJ set">Consultar disponibilidad</a>
-      </div>
+      </div></div>
     </article>
 
     <article class="fmt fmt--c">
@@ -459,7 +461,7 @@
         <span><span class="fmt-name">Hybrid set</span><span class="fmt-dur">40 minutos a 3 horas</span></span>
         <span class="fmt-plus" aria-hidden="true">+</span>
       </button>
-      <div class="fmt-panel" id="p-c" role="region" aria-labelledby="b-c" hidden>
+      <div class="fmt-panel" id="p-c" role="region" aria-labelledby="b-c" inert><div class="fmt-in">
         <p>Una experiencia que combina la mezcla musical en vivo con interpretaciones vocales de canciones originales de NICTO. Una propuesta híbrida que conecta la energía de la cabina con la presencia performática del artista. Es el formato de «Una noche electropop».</p>
         <ul>
           <li>Mezcla musical en vivo.</li>
@@ -467,19 +469,8 @@
           <li>Experiencia híbrida entre DJ set y show en vivo.</li>
         </ul>
         <a class="btn" href="#booking" data-format="Hybrid set">Consultar disponibilidad</a>
-      </div>
+      </div></div>
     </article>
-  </div>
-
-  <div class="ig-row">
-    <figure class="ig-box">
-      <iframe src="https://www.instagram.com/p/DfYPG4SG4nm/embed/" title="Carrusel de Instagram con registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026)" loading="lazy" scrolling="no"></iframe>
-      <figcaption>Registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026).</figcaption>
-    </figure>
-    <figure class="ig-box">
-      <iframe src="https://www.instagram.com/nicto.cc/embed/" title="Feed de Instagram de @nicto.cc" loading="lazy"></iframe>
-      <figcaption><a href="https://www.instagram.com/nicto.cc/" target="_blank" rel="noopener">@nicto.cc en Instagram</a></figcaption>
-    </figure>
   </div>
 </section>
 
@@ -583,9 +574,9 @@
         cards.forEach(function (o) {
           o.classList.remove("open");
           o.querySelector(".fmt-btn").setAttribute("aria-expanded", "false");
-          o.querySelector(".fmt-panel").hidden = true;
+          o.querySelector(".fmt-panel").inert = true;
         });
-        if (open) { c.classList.add("open"); btn.setAttribute("aria-expanded", "true"); panel.hidden = false; }
+        if (open) { c.classList.add("open"); btn.setAttribute("aria-expanded", "true"); panel.inert = false; }
       });
     });
 
@@ -593,6 +584,7 @@
     function renderGallery(items) {
       var wrap = document.getElementById("galeria-wrap");
       var grid = document.getElementById("galeria");
+      if (!wrap || !grid) return;
       grid.textContent = "";
       if (!items || !items.length) { wrap.hidden = true; return; }
       wrap.hidden = false;
