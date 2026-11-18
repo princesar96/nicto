@@ -127,7 +127,9 @@
     padding: 6rem var(--gutter) 2.5rem;
     display: flex; flex-direction: column;
   }
-  .hero .mark { width: min(100%, 76svh); margin: auto 0; align-self: flex-start; margin-left: 2%; }
+  .hero .mark { width: min(100%, 40svh); margin: 0 0 1.2rem 2%; align-self: flex-start; }
+  .hero-banner { width: calc(100% + 2 * var(--gutter)); max-width: none; margin: 0 calc(-1 * var(--gutter)) 1.5rem; height: clamp(150px, 32svh, 340px); object-fit: cover; object-position: center 35%; }
+  .hero-foot { margin-top: auto; }
   .hero-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem 3rem; flex-wrap: wrap; }
   .tagline { margin: 0; max-width: 34ch; font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.4; }
 
@@ -188,7 +190,7 @@
   .gallery-wrap { margin-top: clamp(3rem, 7vw, 5rem); }
   .gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(.8rem, 2vw, 1.6rem); align-items: start; grid-auto-flow: dense; }
   .shot { position: relative; margin: 0; padding: 0; border: 0; background: #000; cursor: zoom-in; overflow: hidden; display: block; width: 100%; color: #fff; text-align: left; }
-  .shot--h { grid-column: span 8; } .shot--h:nth-child(3n+2) { grid-column: span 7; }
+  .shot--h:nth-child(odd) { grid-column: 1 / span 8; } .shot--h:nth-child(even) { grid-column: 6 / span 7; }
   .shot--v { grid-column: span 4; } .shot--v:nth-child(2n) { margin-top: 3rem; }
   .shot--s { grid-column: span 5; }
   .shot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.15); transition: filter .5s, transform .8s; }
@@ -261,14 +263,14 @@
     .release--flip .cover { order: 0; }
     .fmt, .fmt--b, .fmt--c { grid-template-columns: minmax(0, 1fr); }
     .fmt--b .fmt-head { order: 0; text-align: left; }
-    .shot--h, .shot--h:nth-child(3n+2) { grid-column: span 12; }
+    .shot--h:nth-child(odd), .shot--h:nth-child(even) { grid-column: 1 / -1; }
     .shot--v { grid-column: span 6; } .shot--v:nth-child(2n) { margin-top: 1.5rem; }
     .shot--s { grid-column: span 6; }
     .nav .mini { display: none; }
     .nav { padding-top: .7rem; padding-bottom: .7rem; }
     .nav ul { width: 100%; justify-content: space-between; flex-wrap: nowrap; gap: .3rem; }
     .nav a { font-size: .95rem; }
-    .hero .mark { width: 100%; margin-left: 0; }
+    .hero .mark { width: min(70%, 40svh); margin-left: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -295,6 +297,7 @@
   <div class="hero-stack">
     <div class="hero-content">
       <img class="mark" src="assets/logo-negro.png" alt="NICTO" width="2345" height="1523" fetchpriority="high">
+      <img class="hero-banner" src="assets/banner-anatomia.webp" alt="Collage repetido de un torso a medias esqueleto y a medias piel, con puntos y trazos marcados" width="2400" height="1029">
       <div class="hero-foot">
         <div class="hero-text">
           <p class="tagline">Proyecto musical electrónico de Chile. Performance en vivo y DJ Set.</p>
@@ -362,7 +365,7 @@
         <dt>Prod. de voces</dt><dd>Gonzalo Meriño x NICTO</dd>
         <dt>Mix</dt><dd>Nico Parra (Black Vitamina)</dd>
         <dt>Máster</dt><dd>Cristóbal Fariña</dd>
-        <dt>Arte</dt><dd>NICTO x Dicaprideth</dd>
+        <dt>Arte</dt><dd>NICTO x Dicapriodeth</dd>
       </dl>
       <iframe class="embed" title="Síntesis, de NICTO, en Spotify" src="https://open.spotify.com/embed/album/5bOS8Tas3ZBqJjhKeHBWxx?theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
@@ -378,7 +381,7 @@
       <p>Remix en colaboración con el músico y productor Tankboy, de proyectos como Alondra Noctvrna Aeon Vex y productor de «Heliade», de Javiera Electra, disco destacado por <a href="https://www.rollingstone.com/music/music-lists/best-latin-albums-2025-1235470004/" target="_blank" rel="noopener">la revista Rolling Stone</a> entre los mejores álbumes latinos y en español de 2025. Publicado en septiembre de 2026.</p>
       <dl class="credits">
         <dt>Prod. Mix y Máster</dt><dd>Tankboy</dd>
-        <dt>Arte</dt><dd>NICTO x Dicaprideth</dd>
+        <dt>Arte</dt><dd>NICTO x Dicapriodeth</dd>
       </dl>
       <iframe class="embed" title="Síntesis (Tankboy Remix), de NICTO, en Spotify" src="https://open.spotify.com/embed/album/7KCLdhuxEbkMPhEWqPJaTa?theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
@@ -499,7 +502,11 @@
   var BOOKING_EMAIL = "unsantuario@gmail.com";
   // Galería: agregar aquí cada foto. Ejemplo:
   // { src: "assets/galeria/nombre.webp", full: "assets/galeria/nombre-grande.webp", w: 1600, h: 1067, alt: "Descripción de la foto", place: "Lugar", date: "Mes de año", credit: "Fotografía: nombre" }
-  var GALLERY = [];
+  var GALLERY = [
+    { src: "assets/galeria/drag-fest-usach-2022.webp", w: 1500, h: 1000, alt: "NICTO cantando al micrófono en un escenario al aire libre, con un parlante y árboles detrás", place: "Drag Fest USACH", date: "2022" },
+    { src: "assets/galeria/feria-pulsar-2022.webp", w: 2000, h: 1333, alt: "Retrato de NICTO con maquillaje brillante y una mano en el pelo, frente a círculos concéntricos", place: "Feria Pulsar", date: "2022" },
+    { src: "assets/galeria/balmaceda-arte-joven-2025.webp", w: 1980, h: 1320, alt: "Performance sobre un escenario oscuro: figura inclinada, con maquillaje y pantalón amplio, bajo una luz cálida", place: "Performance en Balmaceda Arte Joven", date: "2025" }
+  ];
 
   (function () {
     // ---------- Formulario de booking (abre el correo con los datos)
