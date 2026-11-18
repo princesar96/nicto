@@ -1,12 +1,12 @@
 # NICTO
 
-Dossier artístico (EPK) web de NICTO. Sitio estático: `index.html`, `assets/` y `press/`.
+EPK web de NICTO. Sitio estático: `index.html` y `assets/`.
 
 ## Actualizar contenido
 
-- **Correo de booking:** escribirlo en `BOOKING_EMAIL` al final de `index.html`. Con eso se activan los botones "Contratar" y "Booking" y se muestra el correo en Contacto.
-- **Prensa:** reemplazar el texto de la sección `#prensa` y retirar "(actualizar)" cuando haya publicaciones.
-- **Kit de prensa:** `press/nicto-kit-de-prensa.zip`.
+- **Fotos de presentaciones en vivo:** agregarlas al arreglo `GALLERY` al final de `index.html` (hay un ejemplo comentado). Mientras esté vacío, la galería no se muestra.
+- **Correo de booking:** `BOOKING_EMAIL` al final de `index.html` (el formulario y los enlaces lo usan).
+- **Prensa y kit de prensa:** no existen todavía; el kit será este mismo sitio convertido a PDF.
 - **Imágenes:** `assets/` (WebP optimizado; los logos son PNG con transparencia).
 
 ## Despliegue

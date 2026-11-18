@@ -3,19 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NICTO</title>
-<meta name="description" content="NICTO, proyecto musical y performático de Chile. Dossier artístico con música, directo y contacto.">
+<title>NICTO | Proyecto musical y performático de Chile</title>
+<meta name="description" content="NICTO es un proyecto musical y performático independiente de Chile. Electrónica para bailar, entre el pop y lo oscuro. Conoce su música, propuesta escénica y formatos de presentación en vivo.">
 <meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://nictomusica.vercel.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="NICTO">
-<meta property="og:description" content="Proyecto musical y performático de Chile. Música, directo y contacto.">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="NICTO">
+<meta property="og:url" content="https://nictomusica.vercel.app/">
+<meta property="og:title" content="NICTO | Proyecto musical y performático de Chile">
+<meta property="og:description" content="Electrónica para bailar, entre el pop y lo oscuro. Conoce su música, propuesta escénica y formatos de presentación en vivo.">
 <meta property="og:image" content="https://nictomusica.vercel.app/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MusicGroup","name":"NICTO","url":"https://nictomusica.vercel.app/","sameAs":["https://open.spotify.com/intl-es/artist/7tOOxVVu8GvyebUSOocF6V","https://www.instagram.com/nicto.cc/"]}
+</script>
 <style>
+
   :root {
     --gutter: clamp(1rem, 4vw, 3.5rem);
     --display: "Anybody", "Arial Narrow", Impact, sans-serif;
@@ -123,40 +131,46 @@
   .hero-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem 3rem; flex-wrap: wrap; }
   .tagline { margin: 0; max-width: 34ch; font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.4; }
 
+
+  .btn[aria-disabled="true"] { opacity: .55; cursor: default; }
+  .btn[aria-disabled="true"]:hover { background: transparent; color: inherit; }
+  .btn small { font-family: var(--text); font-stretch: 100%; font-weight: 400; font-size: .8rem; margin-left: .4rem; }
+  .hero-text { max-width: 44ch; }
+  .tagline { margin: 0 0 .8rem; }
+  .tagline-q { margin: 0; font-style: italic; font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.5; opacity: .85; }
+  h2.sub { font-family: var(--display); font-stretch: 70%; font-weight: 800; font-size: clamp(2rem, 5vw, 3.6rem); line-height: .95; margin: 0 0 2rem; }
+  h3.sub-h { font-size: clamp(1.6rem, 3vw, 2.4rem); margin: 0 0 1.5rem; }
+  .sep { margin-top: clamp(3.5rem, 8vw, 6rem); }
+
   /* Música */
-  .release { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: end; margin-bottom: clamp(3.5rem, 8vw, 6rem); }
+  .release { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: start; margin-bottom: clamp(3.5rem, 8vw, 6rem); }
   .release:last-of-type { margin-bottom: 0; }
   .release--flip { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
   .release--flip .cover { order: 2; }
   .cover { display: block; }
   .cover img { width: 100%; aspect-ratio: 1; object-fit: cover; }
-  .release .info p { max-width: 46ch; margin: 0 0 1.4rem; }
+  .release .info p { max-width: 46ch; margin: 0 0 1.2rem; }
+  .credits { margin: 0 0 1.4rem; padding: 0; display: grid; grid-template-columns: max-content 1fr; gap: .15rem 1.2rem; font-size: .95rem; line-height: 1.5; }
+  .credits dt { opacity: .66; }
+  .credits dd { margin: 0; }
   .embed { width: 100%; height: 152px; border: 0; border-radius: 0; display: block; background: #000; }
-  .visualizer { margin-top: clamp(3.5rem, 8vw, 6rem); }
   .listen { margin-top: clamp(2.5rem, 6vw, 4rem); }
 
-  /* Directo */
-  .formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin-bottom: clamp(3rem, 7vw, 5rem); }
-  .format { padding: clamp(1.5rem, 4vw, 3rem); }
-  .format--pos { --bg: #fff; --fg: #000; background: #fff; color: #000; border: 2px solid #fff; border-right-width: 1px; }
-  .format--neg { --bg: #000; --fg: #fff; background: #000; color: #fff; border: 2px solid #fff; border-left-width: 1px; }
-  .format p { margin: 0 0 1em; max-width: 44ch; }
-  .format .duration { font-family: var(--display); font-stretch: 60%; font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: .9; margin: 0 0 1.2rem; }
-  .format .variant { border-top: 2px solid currentColor; padding-top: 1rem; margin-top: 1.5rem; }
-  .video { margin: 0; max-width: 60rem; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(1.2rem, 3vw, 2.5rem); align-items: center; }
+  /* Video (sesión, visualizer) */
+  .video { margin: 0; max-width: 64rem; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.2rem, 3vw, 2.5rem); align-items: center; }
   .video .frame { position: relative; aspect-ratio: 16 / 9; background: #000; }
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .video figcaption p { margin: 0 0 .8rem; max-width: 40ch; }
-  .video figcaption h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
-  .visualizer { margin-top: clamp(3rem, 7vw, 5rem); }
+  .video figcaption h3 { font-size: clamp(1.5rem, 2.6vw, 2.2rem); }
+  .visualizer { margin-top: clamp(2.5rem, 6vw, 4rem); }
 
-  /* Universo: collage de referencias sobre fondo a color */
-  .universe {
-    position: relative; overflow: hidden;
-    background: linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.62) 60%, rgba(0,0,0,.35)), url(assets/bg-explosion.webp) center / cover no-repeat, #000;
-  }
+  /* Universo */
+  .universe { position: relative; overflow: hidden; background: url(assets/bg-explosion.webp) center / cover no-repeat, #000; }
+  .universe::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.72); }
   .universe > * { position: relative; }
-  .universe-text { margin-bottom: clamp(2rem, 5vw, 4rem); }
+  .universe-text { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 5vw, 4rem); margin-bottom: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .universe-text .big { font-size: clamp(1.35rem, 2.5vw, 2rem); line-height: 1.4; margin: 0; max-width: 36ch; }
+  .universe-text .rest { font-size: 1.1rem; margin: 0; max-width: 40ch; }
   .collage { height: clamp(520px, 62vw, 900px); }
   .collage .c {
     position: absolute; height: auto; max-width: none;
@@ -170,6 +184,44 @@
   .c-anatomia { left: 70%; top: 30%; width: 28%; z-index: 3; }
   .c-carta { left: 12%; top: 52%; width: 46%; z-index: 2; }
 
+  /* Galería de presentaciones en vivo */
+  .gallery-wrap { margin-top: clamp(3rem, 7vw, 5rem); }
+  .gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(.8rem, 2vw, 1.6rem); align-items: start; grid-auto-flow: dense; }
+  .shot { position: relative; margin: 0; padding: 0; border: 0; background: #000; cursor: zoom-in; overflow: hidden; display: block; width: 100%; color: #fff; text-align: left; }
+  .shot--h { grid-column: span 8; } .shot--h:nth-child(3n+2) { grid-column: span 7; }
+  .shot--v { grid-column: span 4; } .shot--v:nth-child(2n) { margin-top: 3rem; }
+  .shot--s { grid-column: span 5; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.15); transition: filter .5s, transform .8s; }
+  .shot:hover img, .shot:focus-visible img { filter: none; transform: scale(1.04); }
+  .shot .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.4rem .9rem .7rem; background: #000; color: #fff; font-size: .85rem; line-height: 1.35; transform: translateY(101%); transition: transform .35s; }
+  .shot:hover .cap, .shot:focus-visible .cap { transform: none; }
+  .lightbox { border: 0; padding: 0; background: #000; color: #fff; width: 100vw; height: 100vh; max-width: none; max-height: none; }
+  .lightbox::backdrop { background: #000; }
+  .lb-in { height: 100%; display: grid; grid-template-rows: 1fr auto; padding: 1rem var(--gutter); gap: .8rem; }
+  .lb-in img { width: 100%; height: 100%; min-height: 0; object-fit: contain; filter: grayscale(1) contrast(1.1); }
+  .lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .lb-bar p { margin: 0; font-size: .95rem; }
+  .lb-btns { display: flex; gap: .6rem; }
+  .lb-btns button { font: inherit; font-family: var(--display); font-stretch: 80%; font-weight: 700; color: #fff; background: #000; border: 2px solid #fff; padding: .5rem 1rem; cursor: pointer; }
+  .lb-btns button:hover { background: #fff; color: #000; }
+
+  /* En vivo */
+  .fmt { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding: clamp(1.5rem, 4vw, 3rem); border: 2px solid #fff; margin: 0 0 clamp(1.5rem, 3vw, 2.5rem); }
+  .fmt--a { --bg: #fff; --fg: #000; background: #fff; color: #000; }
+  .fmt--b { --bg: #000; --fg: #fff; background: #000; color: #fff; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .fmt--b .fmt-head { order: 2; text-align: right; }
+  .fmt--c { --bg: #fff; --fg: #000; background: #fff; color: #000; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+  .fmt-letter { font-family: var(--display); font-stretch: 50%; font-weight: 900; font-size: clamp(5rem, 12vw, 9rem); line-height: .8; margin: 0 0 .5rem; }
+  .fmt h3 { font-size: clamp(2rem, 4vw, 3.2rem); }
+  .fmt .duration { font-family: var(--display); font-stretch: 60%; font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: .95; margin: 0; }
+  .fmt p { margin: 0 0 1em; max-width: 52ch; }
+  .fmt ul { margin: 0 0 1.5rem; padding-left: 1.1rem; }
+  .fmt li { margin: 0 0 .25rem; }
+  .fmt-media { margin: 0; }
+  .ig { width: 100%; max-width: 420px; height: 560px; border: 0; background: #fff; display: block; }
+  .fmt-media figcaption { margin-top: .6rem; font-size: .9rem; line-height: 1.45; max-width: 44ch; }
+  .ig-link { margin: 2rem 0 0; }
+
   /* Lente negativo: sigue el puntero en todo el sitio */
   .lens {
     position: fixed; left: 0; top: 0; z-index: 60;
@@ -179,15 +231,21 @@
     will-change: transform;
   }
 
-  /* Prensa */
-  .press { max-width: 52ch; }
-
-  /* Contacto */
-  #contacto { background: linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.78)), url(assets/bg-esferas.webp) center / cover no-repeat, #000; }
-  .booking { font-family: var(--display); font-stretch: 70%; font-weight: 800; font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1; margin: 0 0 2rem; }
-  .booking small { display: block; font-family: var(--text); font-stretch: 100%; font-weight: 400; font-size: 1.05rem; line-height: 1.6; margin-bottom: .4rem; opacity: .7; }
-  .links { list-style: none; margin: 0 0 clamp(4rem, 9vw, 7rem); padding: 0; display: grid; gap: .5rem; }
-  .links a { font-family: var(--display); font-stretch: 80%; font-weight: 700; font-size: 1.4rem; }
+  /* Booking */
+  .book { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .book .lead { max-width: 30ch; }
+  .booking { font-family: var(--display); font-stretch: 70%; font-weight: 800; font-size: clamp(1.4rem, 3.2vw, 2.4rem); line-height: 1.1; margin: 0 0 1.5rem; overflow-wrap: anywhere; }
+  .links { list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; }
+  .links a { font-family: var(--display); font-stretch: 80%; font-weight: 700; font-size: 1.3rem; }
+  form.booking-form { display: grid; gap: 1rem; }
+  .field { display: grid; gap: .3rem; }
+  .field label { font-family: var(--display); font-stretch: 80%; font-weight: 700; font-size: 1rem; }
+  .field input, .field select, .field textarea { font: inherit; font-size: 1.05rem; color: #000; background: #fff; border: 2px solid #000; border-radius: 0; padding: .65rem .75rem; width: 100%; }
+  .field textarea { min-height: 8rem; resize: vertical; }
+  .form-note { margin: 0; }
+  .site-foot { position: relative; overflow: hidden; background: url(assets/bg-esferas.webp) center / cover no-repeat, #000; color: #fff; padding: clamp(4rem, 9vw, 7rem) var(--gutter) 2rem; }
+  .site-foot::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.6); }
+  .site-foot > * { position: relative; }
   .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
   .foot img { width: min(100%, 520px); }
 
@@ -199,11 +257,13 @@
     .c-meridianos { left: 2%; top: 32%; height: 40%; }
     .c-anatomia { left: 40%; top: 38%; width: 58%; }
     .c-carta { left: 0; top: 66%; width: 90%; }
-    .release, .release--flip { grid-template-columns: minmax(0, 1fr); align-items: start; }
+    .release, .release--flip, .universe-text, .book { grid-template-columns: minmax(0, 1fr); }
     .release--flip .cover { order: 0; }
-    .formats { grid-template-columns: minmax(0, 1fr); }
-    .format--pos { border-right-width: 2px; border-bottom-width: 1px; }
-    .format--neg { border-left-width: 2px; border-top-width: 1px; }
+    .fmt, .fmt--b, .fmt--c { grid-template-columns: minmax(0, 1fr); }
+    .fmt--b .fmt-head { order: 0; text-align: left; }
+    .shot--h, .shot--h:nth-child(3n+2) { grid-column: span 12; }
+    .shot--v { grid-column: span 6; } .shot--v:nth-child(2n) { margin-top: 1.5rem; }
+    .shot--s { grid-column: span 6; }
     .nav .mini { display: none; }
     .nav { padding-top: .7rem; padding-bottom: .7rem; }
     .nav ul { width: 100%; justify-content: space-between; flex-wrap: nowrap; gap: .3rem; }
@@ -212,35 +272,38 @@
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .btn { transition: none; }
+    .btn, .shot img, .shot .cap { transition: none; }
   }
 </style>
 </head>
 <body>
 <div class="lens" id="lens" aria-hidden="true"></div>
-<a class="skip" href="#musica">Saltar al contenido</a>
+<a class="skip" href="#universo">Saltar al contenido</a>
 
 <nav class="nav" aria-label="Principal">
   <a class="mini" href="#inicio" aria-label="NICTO, inicio"><img src="assets/logo-blanco.png" alt="" width="40" height="26"></a>
   <ul>
     <li><a href="#universo">Universo</a></li>
     <li><a href="#musica">Música</a></li>
-    <li><a href="#directo">Directo</a></li>
-    <li><a href="#prensa">Prensa</a></li>
-    <li><a href="#contacto" data-booking>Booking</a></li>
+    <li><a href="#en-vivo">En vivo</a></li>
+    <li><a href="#booking">Booking</a></li>
   </ul>
 </nav>
 
 <header class="band band--pos hero" id="inicio">
   <h1 class="sr-only">NICTO</h1>
-  <div class="hero-stack" id="stack">
-    <div class="hero-content" id="hero-content">
+  <div class="hero-stack">
+    <div class="hero-content">
       <img class="mark" src="assets/logo-negro.png" alt="NICTO" width="2345" height="1523" fetchpriority="high">
       <div class="hero-foot">
-        <p class="tagline">Proyecto musical y performático de Chile. Electrónica para bailar, entre el pop y lo oscuro.</p>
+        <div class="hero-text">
+          <p class="tagline">Proyecto musical electrónico de Chile. Performance en vivo y DJ Set.</p>
+          <p class="tagline-q">«Electrónica para bailar en un espacio ritual.<br>Electropop - Dark Pop - Industrial - Synth Pop - Euro Dance».</p>
+        </div>
         <p class="actions">
           <a class="btn" href="#musica">Escuchar</a>
-          <a class="btn" href="#contacto" data-booking>Contratar</a>
+          <a class="btn" href="#booking">Booking</a>
+          <span class="btn" aria-disabled="true">Kit de prensa <small>próximamente</small></span>
         </p>
       </div>
     </div>
@@ -250,10 +313,13 @@
 <main>
 <section class="band band--neg universe" id="universo" aria-labelledby="t-universo">
   <h2 id="t-universo">Universo</h2>
-  <div class="prose universe-text">
-      <p>NICTO es un proyecto musical y performático independiente de Chile. Se gesta desde 2020 y se lanza en 2026 con «Síntesis», su sencillo debut. Es autoproducido por su autor, el músico talquino César Carreño M. Combina composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y el estado catártico.</p>
-      <p>Desde 2024 piensa su presentación en vivo con el escenario como espacio ritual para contar historias: el concierto como algo más que una sucesión de canciones.</p>
+  <div class="universe-text">
+    <p class="big">Nicto, estilizado también NICTO, es un proyecto musical y performático independiente de Chile. Se gesta desde 2020 y se lanza en 2026 con «SÍNTESIS», su sencillo debut doble que también incluye la introducción «OM».</p>
+    <div>
+      <p class="rest">Es autoproducido por su autor, el músico y periodista talquino César C. Montecino, combinando composición electrónica, sintetizadores y bases rítmicas con una puesta en escena pensada para el cuerpo, el baile y la catarsis.</p>
+      <p class="rest">Nicto piensa el formato en vivo sobre el escenario como un espacio ritual para contar historias y expresar sentimientos complejos a partir del canto, la danza y la performance.</p>
     </div>
+  </div>
   <div class="collage" id="collage" aria-hidden="true">
     <img class="c c-figuras" src="assets/cut-figuras.webp" alt="" style="--r:-4deg;--s:.10" width="1100" height="762" loading="lazy">
     <img class="c c-cabeza" src="assets/cut-cabeza.webp" alt="" style="--r:3deg;--s:-.12" width="812" height="966" loading="lazy">
@@ -261,41 +327,70 @@
     <img class="c c-anatomia" src="assets/cut-anatomia.webp" alt="" style="--r:-3deg;--s:-.06" width="974" height="830" loading="lazy">
     <img class="c c-carta" src="assets/cut-carta.webp" alt="" style="--r:2deg;--s:.14" width="1300" height="782" loading="lazy">
   </div>
+
+  <div class="gallery-wrap" id="galeria-wrap" hidden>
+    <h2 class="sub" id="t-galeria">Presentaciones en vivo</h2>
+    <div class="gallery" id="galeria" role="list"></div>
+  </div>
+
+  <figure class="video sep">
+    <div class="frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/J7MSzULZTTc" title="PERFOTIKA X NICTO, sesión en vivo" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <figcaption>
+      <h3>PERFOTIKA X NICTO</h3>
+      <p>Sesión estrenada en 2026, producida por House of Chields.</p>
+      <p class="small"><a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Verla en YouTube</a></p>
+    </figcaption>
+  </figure>
 </section>
 
 <section class="band band--pos" id="musica" aria-labelledby="t-musica">
   <h2 id="t-musica">Música</h2>
-  <p class="lead">Dos lanzamientos, disponibles en todas las plataformas.</p>
 
+  <h3 class="sub-h">Lanzamientos originales</h3>
   <article class="release">
     <a class="cover" href="https://open.spotify.com/intl-es/album/5bOS8Tas3ZBqJjhKeHBWxx" target="_blank" rel="noopener">
       <img src="assets/portada-sintesis.webp" alt="Portada de «Síntesis»: dos manos juntas sobre un pecho, en tonos naranjos, con el logo de NICTO" width="1080" height="1080" loading="lazy">
     </a>
     <div class="info">
       <h3>Síntesis</h3>
-      <p>Sencillo debut de NICTO, publicado en mayo de 2026.</p>
+      <p>Sencillo debut de NICTO, single doble que incluye los tracks «OM» y «SÍNTESIS», publicado en mayo de 2026.</p>
+      <p>Un viaje sonoro Ambient en tono ritual («OM») que te da las instrucciones para dejarte llevar por un deseo abrazante de raíces Euro Dance («SÍNTESIS»).</p>
+      <dl class="credits">
+        <dt>Producción</dt><dd>NICTO</dd>
+        <dt>Prod. de voces</dt><dd>Gonzalo Meriño x NICTO</dd>
+        <dt>Mix</dt><dd>Nico Parra (Black Vitamina)</dd>
+        <dt>Máster</dt><dd>Cristóbal Fariña</dd>
+        <dt>Arte</dt><dd>NICTO x Dicaprideth</dd>
+      </dl>
       <iframe class="embed" title="Síntesis, de NICTO, en Spotify" src="https://open.spotify.com/embed/album/5bOS8Tas3ZBqJjhKeHBWxx?theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </article>
 
+  <h3 class="sub-h sep">Remixes y colaboraciones</h3>
   <article class="release release--flip">
     <a class="cover" href="https://open.spotify.com/intl-es/album/7KCLdhuxEbkMPhEWqPJaTa" target="_blank" rel="noopener">
       <img src="assets/portada-tankboy-remix.webp" alt="Portada de «Síntesis (Tankboy Remix)»: imagen en blanco y negro invertida de una mano sobre un hombro, con el título en cruz" width="1080" height="1080" loading="lazy">
     </a>
     <div class="info">
       <h3>Síntesis (Tankboy Remix)</h3>
-      <p>Remix en colaboración con Tankboy, músico de proyectos como Alondra Noctvurna Aeon Vex y productor de «Heliade», de Javiera Electra, disco destacado por <a href="https://www.rollingstone.com/music/music-lists/best-latin-albums-2025-1235470004/" target="_blank" rel="noopener">la revista Rolling Stone</a> entre los mejores álbumes latinos y en español de 2025. Publicado en septiembre de 2026.</p>
+      <p>Remix en colaboración con el músico y productor Tankboy, de proyectos como Alondra Noctvrna Aeon Vex y productor de «Heliade», de Javiera Electra, disco destacado por <a href="https://www.rollingstone.com/music/music-lists/best-latin-albums-2025-1235470004/" target="_blank" rel="noopener">la revista Rolling Stone</a> entre los mejores álbumes latinos y en español de 2025. Publicado en septiembre de 2026.</p>
+      <dl class="credits">
+        <dt>Prod. Mix y Máster</dt><dd>Tankboy</dd>
+        <dt>Arte</dt><dd>NICTO x Dicaprideth</dd>
+      </dl>
       <iframe class="embed" title="Síntesis (Tankboy Remix), de NICTO, en Spotify" src="https://open.spotify.com/embed/album/7KCLdhuxEbkMPhEWqPJaTa?theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
   </article>
 
   <figure class="video visualizer">
     <div class="frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/Drc-wVFhX44" title="Visualizer de Síntesis (Tankboy Remix)" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/Drc-wVFhX44" title="SÍNTESIS//REMIX//VISUALIZER" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
     <figcaption>
-      <h3>Visualizer del remix</h3>
-      <p>«SÍNTESIS//REMIX//VISUALIZER», estrenado en octubre de 2026. Edición de Nicto y Tankboy; cámara de Dicapriodeth.</p>
+      <h3>SÍNTESIS//REMIX//VISUALIZER</h3>
+      <p>Visualizer estrenado en octubre de 2026. Edición de Nicto y Tankboy; cámara de Dicapriodeth.</p>
       <p class="small"><a href="https://www.youtube.com/watch?v=Drc-wVFhX44" target="_blank" rel="noopener">Verlo en YouTube</a></p>
     </figcaption>
   </figure>
@@ -303,79 +398,194 @@
   <p class="listen actions"><a class="btn" href="https://open.spotify.com/intl-es/artist/7tOOxVVu8GvyebUSOocF6V" target="_blank" rel="noopener">NICTO en Spotify</a></p>
 </section>
 
-<section class="band band--neg" id="directo" aria-labelledby="t-directo">
-  <h2 id="t-directo">Directo</h2>
-  <p class="lead">Dos formatos: un show para ver y un set para bailar.</p>
+<section class="band band--neg" id="en-vivo" aria-labelledby="t-vivo">
+  <h2 id="t-vivo">En vivo</h2>
+  <p class="lead">Tres formatos para distintas experiencias: un show performático, un DJ set y una propuesta híbrida para la pista de baile.</p>
 
-  <div class="formats">
-    <article class="format format--pos">
-      <h3>Show en vivo</h3>
+  <article class="fmt fmt--a" aria-labelledby="f-a">
+    <div class="fmt-head">
+      <p class="fmt-letter" aria-hidden="true">A</p>
+      <h3 id="f-a">Show en vivo</h3>
       <p class="duration">20 a 40 minutos</p>
-      <p>Presentación performática, bailable e intensa, pensada para espacios nocturnos con proyecciones e iluminación inmersiva.</p>
-    </article>
-    <article class="format format--neg">
-      <h3>DJ set</h3>
-      <p class="duration">1 a 2 horas</p>
-      <p>Un recorrido por el electropop, lo oscuro, lo queer y el eurodance, hecho para la pista, con temas propios entre medio.</p>
-      <div class="variant">
-        <h3>Hybrid set</h3>
-        <p>La variante de «Una noche electropop»: NICTO mezcla y además canta en vivo sus propios temas.</p>
-        <p class="small muted">En la cabina suenan, entre otros, Robyn, Kylie Minogue, Madonna, Depeche Mode, New Order y Hercules &amp; Love Affair.</p>
-      </div>
-    </article>
-  </div>
-
-  <figure class="video">
-    <div class="frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/J7MSzULZTTc" title="PERFOTIK presenta a NICTO, sesión en vivo de «Síntesis»" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
-    <figcaption>
-      <h3>Sesión en vivo</h3>
-      <p>«PERFOTIK presenta a: NICTO». «Síntesis», el sencillo debut, en versión sesión en vivo. Publicada en septiembre de 2026.</p>
-      <p class="small"><a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Verla en YouTube</a></p>
-    </figcaption>
-  </figure>
+    <div class="fmt-body">
+      <p>Una presentación performática, bailable e intensa. NICTO presenta su repertorio original mediante una puesta en escena que combina electrónica, voz, cuerpo y recursos visuales. Una experiencia concebida para espacios nocturnos, festivales y escenarios donde la música y la performance dialogan y conectan con el público.</p>
+      <ul>
+        <li>Repertorio original.</li>
+        <li>Interpretación en vivo.</li>
+        <li>Puesta en escena performática.</li>
+        <li>Recursos visuales.</li>
+      </ul>
+      <a class="btn" href="#booking" data-format="Show en vivo">Consultar disponibilidad</a>
+    </div>
+  </article>
+
+  <article class="fmt fmt--b" aria-labelledby="f-b">
+    <div class="fmt-head">
+      <p class="fmt-letter" aria-hidden="true">B</p>
+      <h3 id="f-b">DJ set</h3>
+      <p class="duration">40 min a 3 horas</p>
+    </div>
+    <div class="fmt-body">
+      <p>Un recorrido por el pop, la electrónica y la escena queer a partir de influencias musicales de NICTO. Una selección musical para la pista de baile que incorpora clásicos del pop, el house, el disco y la electrónica, así como rarezas, nuevos lanzamientos y recomendaciones de carácter personal, incluyendo siempre una buena dosis de música chilena.</p>
+      <ul>
+        <li>Selección musical curada para cada ocasión.</li>
+      </ul>
+      <a class="btn" href="#booking" data-format="DJ set">Consultar disponibilidad</a>
+    </div>
+  </article>
+
+  <article class="fmt fmt--c" aria-labelledby="f-c">
+    <div>
+      <p class="fmt-letter" aria-hidden="true">C</p>
+      <h3 id="f-c">Hybrid set</h3>
+      <p class="duration">40 minutos a 3 horas</p>
+      <p style="margin-top:1.2rem">Una experiencia que combina la mezcla musical en vivo con interpretaciones vocales de canciones originales de NICTO. Una propuesta híbrida que conecta la energía de la cabina con la presencia performática del artista. Es el formato de «Una noche electropop».</p>
+      <ul>
+        <li>Mezcla musical en vivo.</li>
+        <li>Interpretación vocal de canciones originales.</li>
+        <li>Experiencia híbrida entre DJ set y show en vivo.</li>
+      </ul>
+      <a class="btn" href="#booking" data-format="Hybrid set">Consultar disponibilidad</a>
+    </div>
+    <figure class="fmt-media">
+      <iframe class="ig" src="https://www.instagram.com/p/DfYPG4SG4nm/embed/" title="Carrusel de Instagram con registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026)" loading="lazy" scrolling="no"></iframe>
+      <figcaption>Registros del Hybrid Set en vivo en UNA NOCHE DE TERROR ELECTROPOP (2026). <a href="https://www.instagram.com/p/DfYPG4SG4nm/?img_index=1" target="_blank" rel="noopener">Ver en Instagram</a>.</figcaption>
+    </figure>
+  </article>
+
+  <p class="ig-link actions"><a class="btn" href="https://www.instagram.com/nicto.cc/" target="_blank" rel="noopener">Instagram @nicto.cc</a></p>
 </section>
 
-<section class="band band--pos" id="prensa" aria-labelledby="t-prensa">
-  <h2 id="t-prensa">Prensa <span class="upd">(actualizar)</span></h2>
-  <p class="lead press">Todavía no hay publicaciones sobre NICTO.</p>
-  <p class="actions"><a class="btn" href="press/nicto-kit-de-prensa.zip" download>Descargar kit de prensa</a></p>
-  <p class="small muted prose" style="margin-top:1rem">Incluye el logo en negro y en blanco, las dos portadas y una biografía corta.</p>
-</section>
-
-<section class="band band--neg" id="contacto" aria-labelledby="t-contacto">
-  <h2 id="t-contacto">Contacto</h2>
-  <p class="lead">Para fechas, programación de fiestas y proyectos audiovisuales.</p>
-  <p class="booking"><small>Booking</small><span id="booking-line">(actualizar)</span></p>
-  <ul class="links">
-    <li><a href="https://www.instagram.com/nicto.cc/" target="_blank" rel="noopener">Instagram @nicto.cc</a></li>
-    <li><a href="https://open.spotify.com/intl-es/artist/7tOOxVVu8GvyebUSOocF6V" target="_blank" rel="noopener">Spotify</a></li>
-    <li><a href="https://www.youtube.com/watch?v=J7MSzULZTTc" target="_blank" rel="noopener">Sesión PERFOTIK en YouTube</a></li>
-  </ul>
-  <div class="foot">
-    <img src="assets/logo-blanco.png" alt="NICTO" width="520" height="338" loading="lazy">
-    <p class="small muted">NICTO, 2026</p>
+<section class="band band--pos" id="booking" aria-labelledby="t-booking">
+  <h2 id="t-booking">Booking</h2>
+  <div class="book">
+    <div>
+      <p class="lead">Para fechas, programación de festivales, clubes, fiestas, eventos culturales y proyectos audiovisuales.</p>
+      <p class="booking"><a id="booking-mail" href="mailto:unsantuario@gmail.com">unsantuario@gmail.com</a></p>
+      <ul class="links">
+        <li><a href="https://www.instagram.com/nicto.cc/" target="_blank" rel="noopener">Instagram @nicto.cc</a></li>
+        <li><a href="https://open.spotify.com/intl-es/artist/7tOOxVVu8GvyebUSOocF6V" target="_blank" rel="noopener">Spotify</a></li>
+      </ul>
+    </div>
+    <form class="booking-form" id="booking-form" novalidate>
+      <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-org">Organización o evento</label><input id="f-org" name="org" type="text" autocomplete="organization"></div>
+      <div class="field"><label for="f-correo">Correo electrónico</label><input id="f-correo" name="correo" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-tipo">Tipo de presentación de interés</label>
+        <select id="f-tipo" name="tipo" required>
+          <option value="">Elegir</option>
+          <option>Show en vivo</option>
+          <option>DJ set</option>
+          <option>Hybrid set</option>
+        </select></div>
+      <div class="field"><label for="f-fecha">Fecha tentativa</label><input id="f-fecha" name="fecha" type="text" placeholder="Día, mes o rango de fechas"></div>
+      <div class="field"><label for="f-msg">Mensaje</label><textarea id="f-msg" name="msg"></textarea></div>
+      <p class="actions"><button class="btn" type="submit">Solicitar booking</button></p>
+      <p class="form-note small muted" id="form-note" role="status">Se abre tu programa de correo con el mensaje listo para enviar a unsantuario@gmail.com.</p>
+    </form>
   </div>
 </section>
 </main>
 
+<footer class="site-foot">
+  <div class="foot">
+    <img src="assets/logo-blanco.png" alt="NICTO" width="520" height="338" loading="lazy">
+    <p class="small">NICTO, 2026</p>
+  </div>
+</footer>
+
 <script>
-  // Para activar los botones de contacto, escribe aquí el correo de booking.
   var BOOKING_EMAIL = "unsantuario@gmail.com";
+  // Galería: agregar aquí cada foto. Ejemplo:
+  // { src: "assets/galeria/nombre.webp", full: "assets/galeria/nombre-grande.webp", w: 1600, h: 1067, alt: "Descripción de la foto", place: "Lugar", date: "Mes de año", credit: "Fotografía: nombre" }
+  var GALLERY = [];
 
   (function () {
-    // Booking
-    var line = document.getElementById("booking-line");
-    if (BOOKING_EMAIL) {
-      var href = "mailto:" + BOOKING_EMAIL;
-      document.querySelectorAll("[data-booking]").forEach(function (a) { a.setAttribute("href", href); });
-      var link = document.createElement("a");
-      link.href = href; link.textContent = BOOKING_EMAIL;
-      line.textContent = ""; line.appendChild(link);
-    }
+    // ---------- Formulario de booking (abre el correo con los datos)
+    var form = document.getElementById("booking-form");
+    var tipo = document.getElementById("f-tipo");
+    document.querySelectorAll("[data-format]").forEach(function (a) {
+      a.addEventListener("click", function () { tipo.value = a.getAttribute("data-format"); });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var note = document.getElementById("form-note");
+      var f = form.elements;
+      if (!f.nombre.value.trim() || !f.correo.value.trim() || !f.tipo.value) {
+        note.textContent = "Completa nombre, correo electrónico y tipo de presentación.";
+        (!f.nombre.value.trim() ? f.nombre : !f.correo.value.trim() ? f.correo : f.tipo).focus();
+        return;
+      }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.correo.value.trim())) {
+        note.textContent = "Revisa el correo electrónico.";
+        f.correo.focus();
+        return;
+      }
+      var body = "Nombre: " + f.nombre.value.trim() +
+        "\nOrganización o evento: " + f.org.value.trim() +
+        "\nCorreo electrónico: " + f.correo.value.trim() +
+        "\nTipo de presentación: " + f.tipo.value +
+        "\nFecha tentativa: " + f.fecha.value.trim() +
+        "\n\nMensaje:\n" + f.msg.value.trim();
+      note.textContent = "Se abre tu programa de correo con el mensaje listo para enviar a " + BOOKING_EMAIL + ".";
+      window.location.href = "mailto:" + BOOKING_EMAIL + "?subject=" + encodeURIComponent("Booking NICTO: " + f.tipo.value) + "&body=" + encodeURIComponent(body);
+    });
 
-    // Lente negativo: un círculo que invierte todo lo que hay detrás y sigue al puntero en todo el sitio
+    // ---------- Galería con lightbox
+    function renderGallery(items) {
+      var wrap = document.getElementById("galeria-wrap");
+      var grid = document.getElementById("galeria");
+      grid.textContent = "";
+      if (!items || !items.length) { wrap.hidden = true; return; }
+      wrap.hidden = false;
+      var dlg = document.getElementById("lightbox");
+      if (!dlg) {
+        dlg = document.createElement("dialog");
+        dlg.id = "lightbox"; dlg.className = "lightbox"; dlg.setAttribute("aria-label", "Galería ampliada");
+        dlg.innerHTML = '<div class="lb-in"><img alt=""><div class="lb-bar"><p></p><div class="lb-btns"><button type="button" data-a="prev" aria-label="Foto anterior">&larr;</button><button type="button" data-a="next" aria-label="Foto siguiente">&rarr;</button><button type="button" data-a="close">Cerrar</button></div></div></div>';
+        document.body.appendChild(dlg);
+      }
+      var cur = 0, lastBtn = null;
+      var limg = dlg.querySelector("img"), lcap = dlg.querySelector("p");
+      function capText(it) { return [it.place, it.date, it.credit].filter(Boolean).join(" · "); }
+      function show(i) {
+        cur = (i + items.length) % items.length;
+        var it = items[cur];
+        limg.src = it.full || it.src; limg.alt = it.alt || "";
+        lcap.textContent = capText(it);
+      }
+      dlg.onclick = function (e) {
+        var a = e.target.getAttribute && e.target.getAttribute("data-a");
+        if (a === "close" || e.target === dlg) dlg.close();
+        if (a === "next") show(cur + 1);
+        if (a === "prev") show(cur - 1);
+      };
+      dlg.onkeydown = function (e) {
+        if (e.key === "ArrowRight") show(cur + 1);
+        if (e.key === "ArrowLeft") show(cur - 1);
+      };
+      dlg.onclose = function () { if (lastBtn) lastBtn.focus(); };
+      items.forEach(function (it, i) {
+        var ratio = it.w && it.h ? it.w / it.h : 1.5;
+        var cls = ratio > 1.15 ? "shot--h" : ratio < 0.87 ? "shot--v" : "shot--s";
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "shot " + cls; b.setAttribute("role", "listitem");
+        b.setAttribute("aria-label", "Ampliar foto" + (capText(it) ? ": " + capText(it) : ""));
+        b.style.aspectRatio = it.w && it.h ? it.w + " / " + it.h : "3 / 2";
+        var im = document.createElement("img");
+        im.src = it.src; im.alt = it.alt || ""; im.loading = "lazy";
+        if (it.w) im.width = it.w; if (it.h) im.height = it.h;
+        b.appendChild(im);
+        if (capText(it)) { var c = document.createElement("span"); c.className = "cap"; c.textContent = capText(it); b.appendChild(c); }
+        b.addEventListener("click", function () { lastBtn = b; show(i); dlg.showModal(); });
+        grid.appendChild(b);
+      });
+    }
+    window.renderGallery = renderGallery;
+    renderGallery(GALLERY);
+
+    // ---------- Lente negativo: un círculo que invierte todo lo que hay detrás y sigue al puntero en todo el sitio
     var lens = document.getElementById("lens");
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var ok = (window.CSS && CSS.supports && (CSS.supports("backdrop-filter", "invert(1)") || CSS.supports("-webkit-backdrop-filter", "invert(1)")));
@@ -421,7 +631,7 @@
     window.addEventListener("resize", function () { size(); kick(); });
     kick();
 
-    // Collage de Universo: leve desplazamiento al hacer scroll
+    // ---------- Collage de Universo: leve desplazamiento al hacer scroll
     var collage = document.getElementById("collage");
     if (collage && !reduce) {
       var imgs = collage.querySelectorAll(".c"), pend = false;
